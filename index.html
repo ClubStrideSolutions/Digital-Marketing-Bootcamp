@@ -181,6 +181,24 @@
             border-bottom: none;
         }
         
+        .qr-code-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code-img {
+            max-width: 200px;
+            border-radius: 10px;
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .qr-code-img:hover {
+            transform: scale(1.05);
+        }
+        
         footer {
             background: #2c3e50;
             color: white;
@@ -620,7 +638,10 @@
             
             <div class="cta">
                 <h2>Sign Up for Orientation!</h2>
-                <p>Scan the QR code provided or visit www.clubstride.org</p>
+                <p>Scan the QR code below or visit www.clubstride.org</p>
+                <div class="qr-code-container">
+                    <img src="Digital-Marketing-Bootcamp-Docs-QR.png" alt="QR Code to sign up for orientation" class="qr-code-img">
+                </div>
                 <p>Spaces are limited – secure your spot today!</p>
             </div>
             

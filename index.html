@@ -47,7 +47,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        nav button {
+        .nav-button {
             background: transparent;
             border: none;
             color: white;
@@ -59,7 +59,7 @@
             font-size: 0.9em;
         }
         
-        nav button:hover, nav button.active {
+        .nav-button:hover, .nav-button.active {
             background: #3498db;
         }
         
@@ -269,7 +269,7 @@
                 justify-content: flex-start;
             }
             
-            nav button {
+            .nav-button {
                 white-space: nowrap;
             }
         }
@@ -283,14 +283,14 @@
         </header>
         
         <nav id="navigation">
-            <button class="nav-tab active" data-page="intro">Introduction</button>
-            <button class="nav-tab" data-page="program">Program Structure</button>
-            <button class="nav-tab" data-page="skills">Skills & Learning</button>
-            <button class="nav-tab" data-page="industries">Industry Demand</button>
-            <button class="nav-tab" data-page="entrepreneurship">Entrepreneurship</button>
-            <button class="nav-tab" data-page="trends">Future Trends</button>
-            <button class="nav-tab" data-page="comparison">Program Comparison</button>
-            <button class="nav-tab" data-page="contact">Apply Now</button>
+            <button class="nav-button active" onclick="showPage('intro')">Introduction</button>
+            <button class="nav-button" onclick="showPage('program')">Program Structure</button>
+            <button class="nav-button" onclick="showPage('skills')">Skills & Learning</button>
+            <button class="nav-button" onclick="showPage('industries')">Industry Demand</button>
+            <button class="nav-button" onclick="showPage('entrepreneurship')">Entrepreneurship</button>
+            <button class="nav-button" onclick="showPage('trends')">Future Trends</button>
+            <button class="nav-button" onclick="showPage('comparison')">Program Comparison</button>
+            <button class="nav-button" onclick="showPage('contact')">Apply Now</button>
         </nav>
         
         <!-- Page 1: Introduction -->
@@ -316,8 +316,8 @@
             </div>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn" disabled>Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" disabled>Previous</button>
+                <button class="nav-btn" onclick="showPage('program')">Next</button>
             </div>
         </div>
         
@@ -350,7 +350,7 @@
                 </div>
             </div>
             
-            <h3>Program Structure Breakdown (15 min)</h3>
+            <h3>Program Structure Breakdown</h3>
             
             <div class="columns">
                 <div class="column">
@@ -384,7 +384,7 @@
                 </ul>
             </div>
             
-            <h3>Selection of Specialization Track (10 min)</h3>
+            <h3>Selection of Specialization Track</h3>
             <p>Students pick one of the three specializations:</p>
             
             <div class="columns">
@@ -433,8 +433,8 @@
             </ul>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('intro')">Previous</button>
+                <button class="nav-btn" onclick="showPage('skills')">Next</button>
             </div>
         </div>
         
@@ -480,8 +480,8 @@
             </div>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('program')">Previous</button>
+                <button class="nav-btn" onclick="showPage('industries')">Next</button>
             </div>
         </div>
         
@@ -535,8 +535,8 @@
             </ul>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('skills')">Previous</button>
+                <button class="nav-btn" onclick="showPage('entrepreneurship')">Next</button>
             </div>
         </div>
         
@@ -580,8 +580,8 @@
             </div>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('industries')">Previous</button>
+                <button class="nav-btn" onclick="showPage('trends')">Next</button>
             </div>
         </div>
         
@@ -632,8 +632,8 @@
             </ul>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('entrepreneurship')">Previous</button>
+                <button class="nav-btn" onclick="showPage('comparison')">Next</button>
             </div>
         </div>
         
@@ -696,8 +696,8 @@
             </div>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn">Next</button>
+                <button class="nav-btn" onclick="showPage('trends')">Previous</button>
+                <button class="nav-btn" onclick="showPage('contact')">Next</button>
             </div>
         </div>
         
@@ -743,8 +743,8 @@
             </div>
             
             <div class="nav-controls">
-                <button class="nav-btn prev-btn">Previous</button>
-                <button class="nav-btn next-btn" disabled>Next</button>
+                <button class="nav-btn" onclick="showPage('comparison')">Previous</button>
+                <button class="nav-btn" disabled>Next</button>
             </div>
         </div>
         
@@ -759,58 +759,33 @@
     </div>
     
     <script>
-        // Navigation functionality
-        const pages = document.querySelectorAll('.page');
-        const tabs = document.querySelectorAll('.nav-tab');
-        const prevBtns = document.querySelectorAll('.prev-btn');
-        const nextBtns = document.querySelectorAll('.next-btn');
-        const progressBar = document.getElementById('progressBar');
-        
-        let currentPageIndex = 0;
-        
-        // Update progress bar
-        function updateProgress() {
-            const progress = ((currentPageIndex + 1) / pages.length) * 100;
-            progressBar.style.width = progress + '%';
-        }
-        
-        // Initialize progress
-        updateProgress();
-        
-        // Navigate to a specific page
-        function navigateToPage(index) {
-            // Hide all pages and deactivate all tabs
-            pages.forEach(page => page.classList.remove('active'));
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Show the selected page and activate its tab
-            pages[index].classList.add('active');
-            tabs[index].classList.add('active');
-            
-            // Update current page index
-            currentPageIndex = index;
-            
-            // Update progress
-            updateProgress();
-        }
-        
-        // Set up tab click handlers
-        tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                navigateToPage(index);
+        // Simple and direct page navigation function
+        function showPage(pageId) {
+            // Hide all pages and remove active class from all buttons
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
             });
-        });
-        
-        // Set up prev/next button handlers
-        prevBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentPageIndex > 0) {
-                    navigateToPage(currentPageIndex - 1);
+            
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected page and add active class to the corresponding button
+            document.getElementById(pageId).classList.add('active');
+            
+            // Find and activate the button for this page
+            document.querySelectorAll('.nav-button').forEach(button => {
+                if (button.getAttribute('onclick').includes(pageId)) {
+                    button.classList.add('active');
                 }
             });
-        });
-        
-        nextBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentPageIndex < pages.length - 1) {
-                    navigateToPage(currentPageIndex +
+            
+            // Update progress bar
+            const pages = document.querySelectorAll('.page');
+            let pageIndex = Array.from(pages).findIndex(page => page.id === pageId);
+            const progress = ((pageIndex + 1) / pages.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+    </script>
+</body>
+</html>

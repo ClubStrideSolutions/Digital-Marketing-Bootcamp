@@ -323,7 +323,7 @@
         
         <!-- Page 2: Program Structure -->
         <div id="program" class="page">
-            <h2>Program Structure</h2>
+            <h2>Program Structure & Expectations</h2>
             
             <div class="columns">
                 <div class="column">
@@ -347,6 +347,75 @@
                         <li>Mobile Marketing</li>
                     </ul>
                     <p><strong>$1,000 paid upon completion</strong></p>
+                </div>
+            </div>
+            
+            <h3>Program Structure Breakdown (15 min)</h3>
+            
+            <div class="columns">
+                <div class="column">
+                    <h4>Foundational Training (Mondays)</h4>
+                    <ul>
+                        <li>Core digital marketing skills development</li>
+                        <li>Hands-on platform tutorials</li>
+                        <li>Industry best practices</li>
+                        <li>Real-world campaign experience</li>
+                    </ul>
+                </div>
+                
+                <div class="column">
+                    <h4>Specialization Training (Wednesdays)</h4>
+                    <ul>
+                        <li>Deep-dive into chosen specialty</li>
+                        <li>Advanced techniques and strategies</li>
+                        <li>Working with actual clients</li>
+                        <li>Measurable campaign results</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="column" style="margin-top: 20px;">
+                <h4>Portfolio & Career Prep (Final Two Weeks)</h4>
+                <ul>
+                    <li>Professional portfolio development</li>
+                    <li>Resume building and optimization</li>
+                    <li>Interview preparation</li>
+                    <li>Job search strategy and networking</li>
+                </ul>
+            </div>
+            
+            <h3>Selection of Specialization Track (10 min)</h3>
+            <p>Students pick one of the three specializations:</p>
+            
+            <div class="columns">
+                <div class="column">
+                    <h4>Email Marketing</h4>
+                    <ul>
+                        <li>List building and segmentation</li>
+                        <li>Automation sequences</li>
+                        <li>A/B testing and optimization</li>
+                        <li>Analytics and performance tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="column">
+                    <h4>Social Media Marketing</h4>
+                    <ul>
+                        <li>Content strategy and creation</li>
+                        <li>Community management</li>
+                        <li>Paid social campaigns</li>
+                        <li>Influencer partnerships</li>
+                    </ul>
+                </div>
+                
+                <div class="column">
+                    <h4>Mobile Marketing</h4>
+                    <ul>
+                        <li>App marketing strategies</li>
+                        <li>SMS and push notifications</li>
+                        <li>Location-based marketing</li>
+                        <li>Mobile-first content</li>
+                    </ul>
                 </div>
             </div>
             
@@ -744,19 +813,4 @@
         nextBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (currentPageIndex < pages.length - 1) {
-                    navigateToPage(currentPageIndex + 1);
-                }
-            });
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' && currentPageIndex < pages.length - 1) {
-                navigateToPage(currentPageIndex + 1);
-            } else if (e.key === 'ArrowLeft' && currentPageIndex > 0) {
-                navigateToPage(currentPageIndex - 1);
-            }
-        });
-    </script>
-</body>
-</html>
+                    navigateToPage(currentPageIndex +

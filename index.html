@@ -184,24 +184,6 @@
           border-bottom: none;
       }
 
-      .qr-code-container {
-          display: flex;
-          justify-content: center;
-          margin: 20px 0;
-      }
-
-      .qr-code-img {
-          max-width: 200px;
-          border-radius: 10px;
-          border: 5px solid white;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease;
-      }
-
-      .qr-code-img:hover {
-          transform: scale(1.05);
-      }
-
       footer {
           background: #2c3e50;
           color: white;
@@ -293,7 +275,7 @@
       <button class="nav-button" onclick="showPage('entrepreneurship')">Entrepreneurship</button>
       <button class="nav-button" onclick="showPage('trends')">Future Trends</button>
       <button class="nav-button" onclick="showPage('comparison')">Program Comparison</button>
-      <button class="nav-button" onclick="showPage('contact')">Apply Now</button>
+      <!-- Apply Now removed -->
     </nav>
     
     <!-- Page 1: Introduction -->
@@ -421,7 +403,6 @@
           <div class="emoji">🛒</div>
           <p>Sell your own products online</p>
         </div>
-        <!-- Removed the "go viral" card to avoid social media references -->
         <div class="benefit-card">
           <div class="emoji">💼</div>
           <p>Land a digital marketing job</p>
@@ -506,8 +487,6 @@
         <li>Half of Gen Z wants to become entrepreneurs</li>
         <li>Many students already run side hustles – from app-based solutions to local SMS promotions</li>
       </ul>
-      
-      <!-- Removed the social media/influencer columns for a clean, mobile-focused approach -->
       
       <div class="quote">
         "The best investment you can make is in yourself." - Warren Buffett
@@ -603,39 +582,14 @@
         </div>
       </div>
       
+      <!-- Final page since "Apply Now" is removed -->
       <div class="nav-controls">
         <button class="nav-btn" onclick="showPage('trends')">Previous</button>
-        <button class="nav-btn" onclick="showPage('contact')">Next</button>
-      </div>
-    </div>
-    
-    <!-- Page 8: Apply Now -->
-    <div id="contact" class="page">
-      <h2>Ready to Join Us?</h2>
-      <p>We're thrilled to have you apply for our Digital Marketing Bootcamp! Follow these quick steps:</p>
-      <ul>
-        <li>Fill out the <strong>Club Stride Youth Inter Application</strong></li>
-        <li>Double-check you’ve signed all required documents</li>
-        <li>Prepare any questions you have for our next session</li>
-      </ul>
-      
-      <div class="qr-code-container">
-        <!-- Replace with your own QR code image or link -->
-        <img src="clubstride-org-job-application.png" alt="Apply Now QR Code" class="qr-code-img">
-      </div>
-      
-      <p>Scan the QR code above or visit 
-        <a href="https://www.clubstride.org/job-application" target="_blank" rel="noopener noreferrer">
-          this link
-        </a> 
-        to get started.
-      </p>
-      
-      <div class="nav-controls">
-        <button class="nav-btn" onclick="showPage('comparison')">Previous</button>
         <button class="nav-btn" disabled>Next</button>
       </div>
     </div>
+    
+    <!-- The "Apply Now" section was removed entirely -->
     
     <footer>
       <p>© 2025 Club Stride Inc. | <a href="https://clubstride.com" target="_blank" rel="noopener noreferrer">clubstride.com</a></p>

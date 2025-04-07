@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Program Calendar - April & May 2025</title>
-  <meta name="description" content="Club Stride's Combined Calendar for Mobile Marketing and Social Impact Program sessions in April and May 2025, styled with a modern AI-inspired color palette.">
+  <meta name="description" content="Calendar showing Mobile Marketing Track and Social Impact Program (YPAR) sessions in April and May 2025, with tooltips for each event.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* BODY & CONTAINER */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Soft gradient for an AI-inspired vibe */
       background: linear-gradient(90deg, #ECE9F7 0%, #FFFFFF 100%);
       color: #333;
     }
     h1 {
       text-align: center;
       margin: 20px 0;
-      color: #615EFF; /* Purple accent */
+      color: #615EFF; /* Purple accent for main title */
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 2em;
@@ -32,10 +31,9 @@
       padding: 20px;
     }
 
-    /* MONTH TITLES */
     .month-title {
       text-align: center;
-      background: #F7F6FF; /* Light purple wash */
+      background: #F7F6FF;
       padding: 10px;
       font-weight: bold;
       font-size: 1.25em;
@@ -79,13 +77,15 @@
       padding: 2px 4px;
       border-radius: 4px;
       color: #fff;
+      cursor: pointer; /* indicates interactivity */
+      position: relative;
     }
-    /* Color-coded events: purple for Mobile, teal for Social */
+    /* Color-coded events: Purple for Mobile Mktg, Teal for YPAR */
     .mm-event {
-      background-color: #615EFF; /* Mobile Mktg */
+      background-color: #615EFF; /* Mobile Marketing */
     }
     .si-event {
-      background-color: #4CD4BC; /* Social Impact */
+      background-color: #4CD4BC; /* Social Impact Program */
     }
 
     /* LEGEND */
@@ -114,6 +114,22 @@
       background-color: #4CD4BC;
     }
 
+    /* TOOLTIP */
+    .tooltip {
+      position: fixed;
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.85em;
+      display: none; /* Hidden by default */
+      z-index: 9999;
+      max-width: 220px;
+      word-wrap: break-word;
+      pointer-events: none; /* so it won't steal hover */
+      transition: opacity 0.1s ease;
+    }
+
     footer {
       text-align: center;
       margin-bottom: 20px;
@@ -129,18 +145,18 @@
   </style>
 </head>
 <body>
-  <h1>Program Calendar</h1>
+  <h1>Program Calendar (April &amp; May 2025)</h1>
 
   <div class="container">
     <!-- LEGEND -->
     <div class="legend">
       <div class="legend-item">
-        <span class="legend-swatch mobile-swatch"></span> 
-        Mobile Marketing
+        <span class="legend-swatch mobile-swatch"></span>
+        Mobile Marketing (Track 3)
       </div>
       <div class="legend-item">
         <span class="legend-swatch social-swatch"></span>
-        Social Impact
+        Social Impact Program (YPAR)
       </div>
     </div>
 
@@ -156,139 +172,218 @@
       <div class="day-header">Sat</div>
       <div class="day-header">Sun</div>
 
-      <!-- APRIL starts on Tuesday (4/1/2025), so offset Monday -->
-      <div class="day-cell"></div> <!-- blank for 3/31 (Mon) -->
-      <!-- 1 (Tue) -->
+      <!-- April 1 is Tuesday in 2025, so offset Monday (Mar 31) with blank -->
+      <div class="day-cell"></div>
+      <!-- (1) Tue -->
       <div class="day-cell">
         <div class="date-number">1</div>
       </div>
-      <!-- 2 (Wed) -->
+      <!-- (2) Wed -->
       <div class="day-cell">
         <div class="date-number">2</div>
       </div>
-      <!-- 3 (Thu) -->
+      <!-- (3) Thu -->
       <div class="day-cell">
         <div class="date-number">3</div>
       </div>
-      <!-- 4 (Fri) -->
+      <!-- (4) Fri -->
       <div class="day-cell">
         <div class="date-number">4</div>
       </div>
-      <!-- 5 (Sat) -->
+      <!-- (5) Sat -->
       <div class="day-cell">
         <div class="date-number">5</div>
       </div>
-      <!-- 6 (Sun) -->
+      <!-- (6) Sun -->
       <div class="day-cell">
         <div class="date-number">6</div>
       </div>
-      <!-- 7 (Mon) -->
+      <!-- (7) Mon -->
       <div class="day-cell">
         <div class="date-number">7</div>
       </div>
-      <!-- 8 (Tue) - Social Impact Session 1 -->
+
+      <!-- (8) Tue - YPAR Session #1 -->
       <div class="day-cell">
         <div class="date-number">8</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 1 (5:30–7:30 PM): Orientation & Introduction to Research Frameworks.
+- Overview of internship goals and expectations
+- Intro to public health, community needs assessment, and YPAR methodology
+- Team-building exercise: 'What are the needs in our community?'
+- Pre-training knowledge check quiz">
+          SI #1
+        </span>
       </div>
-      <!-- 9 (Wed) -->
+      <!-- (9) Wed -->
       <div class="day-cell">
         <div class="date-number">9</div>
       </div>
-      <!-- 10 (Thu) - Social Impact Session 2 -->
+
+      <!-- (10) Thu - YPAR Session #2 -->
       <div class="day-cell">
         <div class="date-number">10</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 2 (5:30–7:30 PM): Ethics in Research & Intro to Survey Design.
+- Research ethics, informed consent, confidentiality
+- Understanding ethical risks and AI bias in research
+- Effective survey design with AI-assisted question generation
+- Assignment: Draft 3 original survey questions using AI tools">
+          SI #2
+        </span>
       </div>
-      <!-- 11 (Fri) -->
+      <!-- (11) Fri -->
       <div class="day-cell">
         <div class="date-number">11</div>
       </div>
-      <!-- 12 (Sat) -->
+      <!-- (12) Sat -->
       <div class="day-cell">
         <div class="date-number">12</div>
       </div>
-      <!-- 13 (Sun) -->
+      <!-- (13) Sun -->
       <div class="day-cell">
         <div class="date-number">13</div>
       </div>
-      <!-- 14 (Mon) -->
+      <!-- (14) Mon -->
       <div class="day-cell">
         <div class="date-number">14</div>
       </div>
-      <!-- 15 (Tue) - Social Impact Session 3 -->
+
+      <!-- (15) Tue - YPAR Session #3 -->
       <div class="day-cell">
         <div class="date-number">15</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 3 (5:30–7:30 PM): AI-Enhanced Survey Design Workshop.
+- Advanced survey structure: sequencing, logic, branching
+- Digital tools for survey creation with AI integration
+- QR code generation and distribution strategies
+- Group breakout sessions for survey development">
+          SI #3
+        </span>
       </div>
-      <!-- 16 (Wed) -->
+      <!-- (16) Wed -->
       <div class="day-cell">
         <div class="date-number">16</div>
       </div>
-      <!-- 17 (Thu) - Social Impact Session 4 -->
+
+      <!-- (17) Thu - YPAR Session #4 -->
       <div class="day-cell">
         <div class="date-number">17</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 4 (5:30–7:30 PM): Interview, Focus Group & Data Collection Planning.
+- Structure of interviews and focus groups
+- Facilitation strategies and active listening
+- Introduction to NLP tools for qualitative data analysis
+- Creation of data collection instruments with team role assignments">
+          SI #4
+        </span>
       </div>
-      <!-- 18 (Fri) -->
+      <!-- (18) Fri -->
       <div class="day-cell">
         <div class="date-number">18</div>
       </div>
-      <!-- 19 (Sat) -->
+      <!-- (19) Sat -->
       <div class="day-cell">
         <div class="date-number">19</div>
       </div>
-      <!-- 20 (Sun) -->
+      <!-- (20) Sun -->
       <div class="day-cell">
         <div class="date-number">20</div>
       </div>
-      <!-- 21 (Mon) - Mobile Mktg Week 1 -->
+
+      <!-- (21) Mon - Mobile Mktg #1 -->
       <div class="day-cell">
         <div class="date-number">21</div>
-        <span class="event mm-event">Mobile Mktg (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Mobile Marketing Week 1 (5:30–7 PM): Introduction to Mobile Marketing.
+- Importance of mobile-first strategies
+- Introduction to mobile UX and engagement principles
+- Overview of mobile marketing trends and tools
+- Assessment: Mobile-friendly campaign evaluation">
+          MM #1
+        </span>
       </div>
-      <!-- 22 (Tue) - Social Impact Session 5 -->
+
+      <!-- (22) Tue - YPAR Session #5 -->
       <div class="day-cell">
         <div class="date-number">22</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 5 (5:30–7:30 PM): Community Outreach Strategy & Survey Launch.
+- Finalize personal and team-based outreach plans
+- Review community asset map and distribution points
+- Practice peer-to-peer outreach conversations
+- Prepare outreach tracking templates and QR code flyers">
+          SI #5
+        </span>
       </div>
-      <!-- 23 (Wed) -->
+      <!-- (23) Wed -->
       <div class="day-cell">
         <div class="date-number">23</div>
       </div>
-      <!-- 24 (Thu) - Social Impact Session 6 -->
+
+      <!-- (24) Thu - YPAR Session #6 -->
       <div class="day-cell">
         <div class="date-number">24</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 6 (5:30–7:30 PM): Survey Distribution & Data Preprocessing.
+- Execute active survey outreach in community locations
+- Share initial field experiences, successes, and barriers
+- Introduction to data preprocessing and cleaning techniques
+- Hands-on practice with data formatting and organization">
+          SI #6
+        </span>
       </div>
-      <!-- 25 (Fri) -->
+      <!-- (25) Fri -->
       <div class="day-cell">
         <div class="date-number">25</div>
       </div>
-      <!-- 26 (Sat) -->
+      <!-- (26) Sat -->
       <div class="day-cell">
         <div class="date-number">26</div>
       </div>
-      <!-- 27 (Sun) -->
+      <!-- (27) Sun -->
       <div class="day-cell">
         <div class="date-number">27</div>
       </div>
-      <!-- 28 (Mon) - Mobile Mktg Week 2 -->
+
+      <!-- (28) Mon - Mobile Mktg #2 -->
       <div class="day-cell">
         <div class="date-number">28</div>
-        <span class="event mm-event">Mobile Mktg (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Mobile Marketing Week 2 (5:30–7 PM): SMS Marketing & Push Notifications.
+- How SMS and push notification campaigns work
+- Best practices for messaging, timing, and audience segmentation
+- Hands-on: Designing an SMS campaign message
+- Assessment: Analyze effectiveness of a sample SMS campaign">
+          MM #2
+        </span>
       </div>
-      <!-- 29 (Tue) - Social Impact Session 7 -->
+
+      <!-- (29) Tue - YPAR Session #7 -->
       <div class="day-cell">
         <div class="date-number">29</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 7 (5:30–7:30 PM): Qualitative Data Collection & Initial NLP Analysis.
+- Conduct one-on-one interviews or small focus groups
+- Practice notetaking, quoting, and summarizing themes
+- Introduction to NLP tools for qualitative analysis
+- Assignment: Submit summary highlights from interview/focus group">
+          SI #7
+        </span>
       </div>
-      <!-- 30 (Wed) - Mobile Mktg Week 3 -->
+
+      <!-- (30) Wed - Mobile Mktg #3 -->
       <div class="day-cell">
         <div class="date-number">30</div>
-        <span class="event mm-event">Mobile Mktg (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Mobile Marketing Week 3 (5:30–7 PM): Mobile Ad Strategies & App Marketing.
+- Best practices for mobile advertising and ad placement
+- Overview of app marketing techniques and App Store Optimization
+- Hands-on: Design a mobile ad and optimize an app listing
+- Assessment: Ad critique and app store listing analysis">
+          MM #3
+        </span>
       </div>
-      <!-- end of April -->
     </div>
 
     <!-- MAY 2025 -->
@@ -303,153 +398,303 @@
       <div class="day-header">Sat</div>
       <div class="day-header">Sun</div>
 
-      <!-- May starts on Thursday (5/1/2025), offset Mon, Tue, Wed -->
+      <!-- May starts on Thursday (5/1/2025), so blank Mon-Wed -->
       <div class="day-cell"></div>
       <div class="day-cell"></div>
       <div class="day-cell"></div>
-      <!-- 1 (Thu) - Social Impact 8 -->
+
+      <!-- (1) Thu - YPAR #8 -->
       <div class="day-cell">
         <div class="date-number">1</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 8 (5:30–7:30 PM): Mid-Phase Survey Review & Exploratory Data Analysis.
+- Review survey response data and discuss what's working
+- Introduction to Exploratory Data Analysis techniques
+- Peer collaboration to identify outreach strategies
+- Assignment: Update outreach plan and prepare initial data visualizations">
+          SI #8
+        </span>
       </div>
-      <!-- 2 (Fri) -->
+      <!-- (2) Fri -->
       <div class="day-cell">
         <div class="date-number">2</div>
       </div>
-      <!-- 3 (Sat) -->
+      <!-- (3) Sat -->
       <div class="day-cell">
         <div class="date-number">3</div>
       </div>
-      <!-- 4 (Sun) -->
+      <!-- (4) Sun -->
       <div class="day-cell">
         <div class="date-number">4</div>
       </div>
-      <!-- 5 (Mon) - Mobile Mktg Wk 4 -->
+
+      <!-- (5) Mon - Mobile Mktg #4 -->
       <div class="day-cell">
         <div class="date-number">5</div>
-        <span class="event mm-event">Mobile Mktg (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Mobile Marketing Week 4 (5:30–7 PM): Building a Mobile Marketing Strategy.
+- Integrating mobile strategies into a cohesive marketing plan
+- Planning for user engagement and personalization
+- Hands-on: Presenting a complete mobile marketing strategy
+- Assessment: Final project presentation and peer review">
+          MM #4
+        </span>
       </div>
-      <!-- 6 (Tue) - Soc. Impact 9 -->
+
+      <!-- (6) Tue - YPAR #9 -->
       <div class="day-cell">
         <div class="date-number">6</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 9 (5:30–7:30 PM): Advanced Data Analysis & AI-Enhanced Pattern Recognition.
+- Application of statistical analysis and pattern identification
+- Introduction to AI tools for predictive modeling
+- Sorting and coding open-ended survey responses with NLP
+- Assignment: Submit three major AI-enhanced findings from survey data">
+          SI #9
+        </span>
       </div>
-      <!-- 7 (Wed) - M.M. Portfolio Class 1 -->
+
+      <!-- (7) Wed - Mobile Mktg Portfolio #1 -->
       <div class="day-cell">
         <div class="date-number">7</div>
-        <span class="event mm-event">Portf. Class (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Portfolio Building Class 1 (5:30–7 PM): Digital Marketing Portfolio – Part 1.
+- Selecting and refining projects from specialization track
+- Writing structured case studies: goals, strategy, execution, results
+- Introduction to using free website builders
+- Organizing and formatting portfolio content">
+          MM Portfolio 1
+        </span>
       </div>
-      <!-- 8 (Thu) - Soc. Impact 10 -->
+
+      <!-- (8) Thu - YPAR #10 -->
       <div class="day-cell">
         <div class="date-number">8</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 10 (5:30–7:30 PM): Advanced Visualization & Data Storytelling Workshop.
+- Creating interactive dashboards and visual storytelling elements
+- Integrating qualitative and quantitative data visualization
+- Ethical considerations in AI-driven analytics
+- Assignment: Create one interactive data visualization dashboard">
+          SI #10
+        </span>
       </div>
-      <!-- 9 (Fri) - M.M. Portfolio Class 2 -->
+      <!-- (9) Fri - Mobile Mktg Portfolio #2 -->
       <div class="day-cell">
         <div class="date-number">9</div>
-        <span class="event mm-event">Portf. Class (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Portfolio Building Class 2 (5:30–7 PM): Portfolio Dev Part 2 + Resume Optimization.
+- Finalizing and polishing portfolio layout and content
+- Resume writing fundamentals for marketing roles
+- Tips for tailoring resumes to job descriptions
+- Overview of free resume-building tools">
+          MM Portfolio 2
+        </span>
       </div>
-      <!-- 10 (Sat) -->
+      <!-- (10) Sat -->
       <div class="day-cell">
         <div class="date-number">10</div>
       </div>
-      <!-- 11 (Sun) -->
+      <!-- (11) Sun -->
       <div class="day-cell">
         <div class="date-number">11</div>
       </div>
-      <!-- 12 (Mon) -->
+      <!-- (12) Mon -->
       <div class="day-cell">
         <div class="date-number">12</div>
       </div>
-      <!-- 13 (Tue) - Soc. Impact 11 -->
+
+      <!-- (13) Tue - YPAR #11 -->
       <div class="day-cell">
         <div class="date-number">13</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 11 (5:30–7:30 PM): Machine Learning Applications & Report Planning.
+- Introduction to practical ML applications in community research
+- Hands-on exploration of topic modeling and sentiment analysis
+- Report component planning: Summary, Methodology, Findings, Recommendations
+- Writing workshop with AI-assisted content summarization tools">
+          SI #11
+        </span>
       </div>
-      <!-- 14 (Wed) - M.M. Portfolio Class 3 -->
+
+      <!-- (14) Wed - Mobile Mktg Portfolio #3 -->
       <div class="day-cell">
         <div class="date-number">14</div>
-        <span class="event mm-event">Portf. Class (5:30-7)</span>
+        <span class="event mm-event"
+          data-info="Portfolio Building Class 3 (5:30–7 PM): Portfolio Showcase & Final Review.
+- Presentation skills for digital marketing portfolios
+- How to communicate the value of their work effectively
+- Activities: Present completed portfolios, receive feedback
+- Assessment: Final portfolio review and presentation assessment">
+          MM Portfolio 3
+        </span>
       </div>
-      <!-- 15 (Thu) - Soc. Impact 12 -->
+
+      <!-- (15) Thu - YPAR #12 -->
       <div class="day-cell">
         <div class="date-number">15</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 12 (5:30–7:30 PM): Collaborative Main Event.
+- Interns present community needs assessment findings
+- Demonstration of AI tools and data insights to stakeholders
+- Q&A session and real-time community feedback collection
+- Distribution of digital and printed reports">
+          SI #12
+        </span>
       </div>
-      <!-- 16 (Fri) -->
+      <!-- (16) Fri -->
       <div class="day-cell">
         <div class="date-number">16</div>
       </div>
-      <!-- 17 (Sat) -->
+      <!-- (17) Sat -->
       <div class="day-cell">
         <div class="date-number">17</div>
       </div>
-      <!-- 18 (Sun) -->
+      <!-- (18) Sun -->
       <div class="day-cell">
         <div class="date-number">18</div>
       </div>
-      <!-- 19 (Mon) -->
+      <!-- (19) Mon -->
       <div class="day-cell">
         <div class="date-number">19</div>
       </div>
-      <!-- 20 (Tue) - Soc. Impact 13 -->
+
+      <!-- (20) Tue - YPAR #13 -->
       <div class="day-cell">
         <div class="date-number">20</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 13 (5:30–7:30 PM): Final Report Compilation & Interactive Presentation Design.
+- Report finalization with integrated AI insights and visualizations
+- Design of interactive presentation components
+- Development of Q&A preparation and stakeholder engagement strategies
+- Assignment: Submit final report contribution and create presentation visuals">
+          SI #13
+        </span>
       </div>
-      <!-- 21 (Wed) -->
+      <!-- (21) Wed -->
       <div class="day-cell">
         <div class="date-number">21</div>
       </div>
-      <!-- 22 (Thu) - Soc. Impact 14 -->
+
+      <!-- (22) Thu - YPAR #14 -->
       <div class="day-cell">
         <div class="date-number">22</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 14 (5:30–7:30 PM): Presentation Rehearsal & Sustainability Planning Workshop.
+- Public speaking and data presentation techniques
+- Development of sustainability roadmap for continued research
+- Full presentation practice with peer feedback
+- Assignment: Submit draft sustainability plan contributions">
+          SI #14
+        </span>
       </div>
-      <!-- 23 (Fri) -->
+      <!-- (23) Fri -->
       <div class="day-cell">
         <div class="date-number">23</div>
       </div>
-      <!-- 24 (Sat) -->
+      <!-- (24) Sat -->
       <div class="day-cell">
         <div class="date-number">24</div>
       </div>
-      <!-- 25 (Sun) -->
+      <!-- (25) Sun -->
       <div class="day-cell">
         <div class="date-number">25</div>
       </div>
-      <!-- 26 (Mon) -->
+      <!-- (26) Mon -->
       <div class="day-cell">
         <div class="date-number">26</div>
       </div>
-      <!-- 27 (Tue) - Soc. Impact 15 -->
+
+      <!-- (27) Tue - YPAR #15 -->
       <div class="day-cell">
         <div class="date-number">27</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 15 (5:30–7:30 PM): Unified Sustainability Planning.
+- Joint analysis of event impact data from the collaborative main event
+- Development of integrated sustainability plan
+- Creation of micro-projects utilizing YPAR data insights
+- Planning for knowledge transfer to future cohorts">
+          SI #15
+        </span>
       </div>
-      <!-- 28 (Wed) -->
+      <!-- (28) Wed -->
       <div class="day-cell">
         <div class="date-number">28</div>
       </div>
-      <!-- 29 (Thu) - Soc. Impact 16 -->
+
+      <!-- (29) Thu - YPAR #16 -->
       <div class="day-cell">
         <div class="date-number">29</div>
-        <span class="event si-event">Soc. Impact (5:30-7)</span>
+        <span class="event si-event"
+          data-info="Session 16 (5:30–7:30 PM): Career Pathways & Program Conclusion.
+- Exploration of career opportunities in research, data science, and advocacy
+- Personal reflection on skills development and growth
+- Program evaluation and feedback collection
+- Certificate presentation and celebration of accomplishments">
+          SI #16
+        </span>
       </div>
-      <!-- 30 (Fri) -->
+      <!-- (30) Fri -->
       <div class="day-cell">
         <div class="date-number">30</div>
       </div>
-      <!-- 31 (Sat) -->
+      <!-- (31) Sat -->
       <div class="day-cell">
         <div class="date-number">31</div>
       </div>
-      <!-- end of May -->
     </div>
   </div>
+
+  <!-- Tooltip container -->
+  <div id="tooltip" class="tooltip"></div>
 
   <footer>
     <p>© 2025 Club Stride Inc.</p>
   </footer>
+
+  <script>
+    // Grab the tooltip container
+    const tooltip = document.getElementById('tooltip');
+
+    // Listen for mouseover on each event
+    document.querySelectorAll('.event').forEach(eventEl => {
+      // Show tooltip
+      eventEl.addEventListener('mouseover', (e) => {
+        const info = eventEl.getAttribute('data-info');
+        tooltip.innerText = info;
+        tooltip.style.display = 'block';
+        positionTooltip(e);
+      });
+
+      // Move tooltip on mousemove
+      eventEl.addEventListener('mousemove', (e) => {
+        positionTooltip(e);
+      });
+
+      // Hide tooltip on mouseout
+      eventEl.addEventListener('mouseout', () => {
+        tooltip.style.display = 'none';
+      });
+
+      // For mobile/touch devices, we can also toggle on click:
+      eventEl.addEventListener('click', (e) => {
+        // Toggle display
+        if (tooltip.style.display === 'block' && tooltip.innerText === eventEl.getAttribute('data-info')) {
+          tooltip.style.display = 'none';
+        } else {
+          tooltip.innerText = eventEl.getAttribute('data-info');
+          tooltip.style.display = 'block';
+          positionTooltip(e);
+        }
+      });
+    });
+
+    // Function to position tooltip near mouse
+    function positionTooltip(e) {
+      const offset = 10;
+      tooltip.style.left = (e.pageX + offset) + 'px';
+      tooltip.style.top = (e.pageY + offset) + 'px';
+    }
+  </script>
 </body>
 </html>

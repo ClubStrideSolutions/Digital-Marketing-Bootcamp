@@ -675,20 +675,29 @@
       });
     });
 
-    function positionTooltip(e) {
-      const offset = 10;
-
-      // Put text in the tooltip so we can measure its height
-      tooltip.style.left = (e.pageX + offset) + 'px';
-
-      // Temporarily place the tooltip so offsetHeight can be measured
-      tooltip.style.top = (e.pageY + offset) + 'px';
-      
-      // Now get the actual height of the tooltip
-      const tooltipHeight = tooltip.offsetHeight;
-      // Then reposition above the cursor using that height
-      tooltip.style.top = (e.pageY - offset - tooltipHeight) + 'px';
-    }
+  function positionTooltip(e) {
+    // Instead of using e.pageX/e.pageY, 
+    // anchor to the hovered element's bounding box
+    const rect = e.currentTarget.getBoundingClientRect();
+  
+    // Make sure tooltip is visible before measuring offsetHeight
+    tooltip.style.display = 'block';
+  
+    // We can give a small offset so the tooltip doesn't overlap the date
+    const offset = 5;
+  
+    // Position the tooltip near the top-left of the hovered element
+    tooltip.style.left = (rect.left + window.pageXOffset + offset) + 'px';
+  
+    // Temporarily place the tooltip so we can measure its height
+    tooltip.style.top = (rect.top + window.pageYOffset + offset) + 'px';
+  
+    // Now measure its height to nudge it above or below as desired
+    const tooltipHeight = tooltip.offsetHeight;
+  
+    // Example: place it just above the day number
+    tooltip.style.top = (rect.top + window.pageYOffset - tooltipHeight - offset) + 'px';
+  }
   </script>
 </body>
 </html>

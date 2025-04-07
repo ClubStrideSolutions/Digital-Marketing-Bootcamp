@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Program Calendar - April & May 2025</title>
-  <meta name="description" content="Calendar showing Mobile Marketing Track and Social Impact Program (YPAR) sessions in April and May 2025, with tooltips for each event.">
+  <title>Program Calendar - April & May 2025 (Tooltip Above)</title>
+  <meta name="description" content="Calendar showing Mobile Marketing Track and Social Impact Program (YPAR) sessions in April and May 2025, with tooltips above each event on hover.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* BODY & CONTAINER */
@@ -354,7 +354,7 @@
 - How SMS and push notification campaigns work
 - Best practices for messaging, timing, and audience segmentation
 - Hands-on: Designing an SMS campaign message
-- Assessment: Analyze effectiveness of a sample SMS campaign">
+- Assessment: Analyze a sample SMS marketing campaign">
           MM #2
         </span>
       </div>
@@ -461,7 +461,7 @@
           data-info="Portfolio Building Class 1 (5:30–7 PM): Digital Marketing Portfolio – Part 1.
 - Selecting and refining projects from specialization track
 - Writing structured case studies: goals, strategy, execution, results
-- Introduction to using free website builders
+- Intro to free website builders
 - Organizing and formatting portfolio content">
           MM Portfolio 1
         </span>
@@ -472,7 +472,7 @@
         <div class="date-number">8</div>
         <span class="event si-event"
           data-info="Session 10 (5:30–7:30 PM): Advanced Visualization & Data Storytelling Workshop.
-- Creating interactive dashboards and visual storytelling elements
+- Creating interactive dashboards and visual storytelling
 - Integrating qualitative and quantitative data visualization
 - Ethical considerations in AI-driven analytics
 - Assignment: Create one interactive data visualization dashboard">
@@ -509,10 +509,9 @@
         <div class="date-number">13</div>
         <span class="event si-event"
           data-info="Session 11 (5:30–7:30 PM): Machine Learning Applications & Report Planning.
-- Introduction to practical ML applications in community research
-- Hands-on exploration of topic modeling and sentiment analysis
-- Report component planning: Summary, Methodology, Findings, Recommendations
-- Writing workshop with AI-assisted content summarization tools">
+- Intro to practical ML apps in community research
+- Hands-on topic modeling/sentiment analysis
+- Report component planning & AI-assisted content summarization">
           SI #11
         </span>
       </div>
@@ -523,9 +522,9 @@
         <span class="event mm-event"
           data-info="Portfolio Building Class 3 (5:30–7 PM): Portfolio Showcase & Final Review.
 - Presentation skills for digital marketing portfolios
-- How to communicate the value of their work effectively
-- Activities: Present completed portfolios, receive feedback
-- Assessment: Final portfolio review and presentation assessment">
+- Communicating the value of completed projects
+- Activities: Present completed portfolios, feedback
+- Final portfolio review, completion checklist">
           MM Portfolio 3
         </span>
       </div>
@@ -535,10 +534,10 @@
         <div class="date-number">15</div>
         <span class="event si-event"
           data-info="Session 12 (5:30–7:30 PM): Collaborative Main Event.
-- Interns present community needs assessment findings
-- Demonstration of AI tools and data insights to stakeholders
-- Q&A session and real-time community feedback collection
-- Distribution of digital and printed reports">
+- Present community needs assessment findings
+- Demonstration of AI tools and data insights
+- Q&A session and real-time feedback
+- Distribution of digital/printed reports">
           SI #12
         </span>
       </div>
@@ -563,11 +562,10 @@
       <div class="day-cell">
         <div class="date-number">20</div>
         <span class="event si-event"
-          data-info="Session 13 (5:30–7:30 PM): Final Report Compilation & Interactive Presentation Design.
-- Report finalization with integrated AI insights and visualizations
-- Design of interactive presentation components
-- Development of Q&A preparation and stakeholder engagement strategies
-- Assignment: Submit final report contribution and create presentation visuals">
+          data-info="Session 13 (5:30–7:30 PM): Final Report & Interactive Presentation Design.
+- Integrate AI insights & advanced visualizations
+- Develop Q&A prep & stakeholder engagement
+- Submit final report contribution & presentation visuals">
           SI #13
         </span>
       </div>
@@ -580,11 +578,10 @@
       <div class="day-cell">
         <div class="date-number">22</div>
         <span class="event si-event"
-          data-info="Session 14 (5:30–7:30 PM): Presentation Rehearsal & Sustainability Planning Workshop.
-- Public speaking and data presentation techniques
-- Development of sustainability roadmap for continued research
-- Full presentation practice with peer feedback
-- Assignment: Submit draft sustainability plan contributions">
+          data-info="Session 14 (5:30–7:30 PM): Presentation Rehearsal & Sustainability Planning.
+- Public speaking & data presentation techniques
+- Draft sustainability roadmap for continued research
+- Peer feedback, refine presentation & plan">
           SI #14
         </span>
       </div>
@@ -610,10 +607,10 @@
         <div class="date-number">27</div>
         <span class="event si-event"
           data-info="Session 15 (5:30–7:30 PM): Unified Sustainability Planning.
-- Joint analysis of event impact data from the collaborative main event
-- Development of integrated sustainability plan
-- Creation of micro-projects utilizing YPAR data insights
-- Planning for knowledge transfer to future cohorts">
+- Analyze impact from main event
+- Develop integrated sustainability plan
+- Micro-projects using YPAR data insights
+- Prepare final reflection & personal dev plan">
           SI #15
         </span>
       </div>
@@ -627,10 +624,10 @@
         <div class="date-number">29</div>
         <span class="event si-event"
           data-info="Session 16 (5:30–7:30 PM): Career Pathways & Program Conclusion.
-- Exploration of career opportunities in research, data science, and advocacy
-- Personal reflection on skills development and growth
-- Program evaluation and feedback collection
-- Certificate presentation and celebration of accomplishments">
+- Explore career ops in data science & advocacy
+- Personal reflection on skill development
+- Program evaluation & feedback
+- Certificates & celebration of accomplishments">
           SI #16
         </span>
       </div>
@@ -658,42 +655,39 @@
 
     // Listen for mouseover on each event
     document.querySelectorAll('.event').forEach(eventEl => {
-      // Show tooltip
+      // Show tooltip on hover
       eventEl.addEventListener('mouseover', (e) => {
         const info = eventEl.getAttribute('data-info');
         tooltip.innerText = info;
         tooltip.style.display = 'block';
+        // Position the tooltip (above the cursor)
         positionTooltip(e);
       });
 
-      // Move tooltip on mousemove
+      // Reposition while moving
       eventEl.addEventListener('mousemove', (e) => {
         positionTooltip(e);
       });
 
-      // Hide tooltip on mouseout
+      // Hide on mouseout
       eventEl.addEventListener('mouseout', () => {
         tooltip.style.display = 'none';
       });
-
-      // For mobile/touch devices, we can also toggle on click:
-      eventEl.addEventListener('click', (e) => {
-        // Toggle display
-        if (tooltip.style.display === 'block' && tooltip.innerText === eventEl.getAttribute('data-info')) {
-          tooltip.style.display = 'none';
-        } else {
-          tooltip.innerText = eventEl.getAttribute('data-info');
-          tooltip.style.display = 'block';
-          positionTooltip(e);
-        }
-      });
     });
 
-    // Function to position tooltip near mouse
     function positionTooltip(e) {
       const offset = 10;
+
+      // Put text in the tooltip so we can measure its height
       tooltip.style.left = (e.pageX + offset) + 'px';
+
+      // Temporarily place the tooltip so offsetHeight can be measured
       tooltip.style.top = (e.pageY + offset) + 'px';
+      
+      // Now get the actual height of the tooltip
+      const tooltipHeight = tooltip.offsetHeight;
+      // Then reposition above the cursor using that height
+      tooltip.style.top = (e.pageY - offset - tooltipHeight) + 'px';
     }
   </script>
 </body>

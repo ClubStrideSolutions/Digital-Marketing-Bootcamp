@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Club Stride Program Calendar - April & May 2025 (Tooltip Above)</title>
-  <meta name="description" content="Calendar showing Mobile Marketing Track and Social Impact Program (YPAR) sessions in April and May 2025, with tooltips above each event on hover.">
+  <title>Club Stride Program Calendar (Feb–May 2025)</title>
+  <meta name="description" content="Calendar for Foundational, Email, Social, Mobile Mktg, Portfolio Prep, YPAR, and PHE from Feb–May 2025.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* BODY & CONTAINER */
+    /* ===== BODY & GENERAL ===== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transform: scale(0.9);
-/*       transform-origin: top left; */
-      /* You may need to tweak the width so the scaled body doesn't clip */
-/*       width: 111%; */
       background: linear-gradient(90deg, #ECE9F7 0%, #FFFFFF 100%);
       color: #333;
     }
     h1 {
       text-align: center;
       margin: 20px 0;
-      color: #615EFF; /* Purple accent for main title */
+      color: #615EFF; /* Purple accent */
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 2em;
@@ -33,6 +29,22 @@
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.07);
       padding: 20px;
+      margin-bottom: 60px;
+    }
+
+    /* ===== MONTH SELECTOR ===== */
+    .month-selector {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    .month-selector label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .month-selector select {
+      font-size: 1em;
+      padding: 4px 8px;
+      cursor: pointer;
     }
 
     .month-title {
@@ -47,11 +59,12 @@
       border: 2px solid #615EFF;
     }
 
-    /* GRID LAYOUT */
+    /* ===== GRID LAYOUT ===== */
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 10px;
+      margin-bottom: 20px;
     }
     .day-header {
       text-align: center;
@@ -67,13 +80,13 @@
       position: relative;
       box-shadow: inset 0 0 3px rgba(0,0,0,0.05);
     }
-
-    /* DATE & EVENTS */
     .date-number {
       font-weight: bold;
       margin-bottom: 4px;
       color: #333;
     }
+
+    /* ===== 7 EVENT CLASSES ===== */
     .event {
       display: block;
       margin-top: 2px;
@@ -81,20 +94,21 @@
       padding: 2px 4px;
       border-radius: 4px;
       color: #fff;
-      cursor: pointer; /* indicates interactivity */
+      cursor: pointer;
       position: relative;
     }
-    /* Color-coded events: Purple for Mobile Mktg, Teal for YPAR */
-    .mm-event {
-      background-color: #615EFF; /* Mobile Marketing */
-    }
-    .si-event {
-      background-color: #4CD4BC; /* Social Impact Program */
-    }
+    .fnd-event { background-color: #FF9800; } /* Foundational */
+    .em-event  { background-color: #F57C00; } /* Email Marketing */
+    .sm-event  { background-color: #4CAF50; } /* Social Media */
+    .mm-event  { background-color: #615EFF; } /* Mobile Marketing */
+    .pf-event  { background-color: #E91E63; } /* Portfolio Prep */
+    .si-event  { background-color: #4CD4BC; } /* YPAR */
+    .phe-event { background-color: #FFC107; } /* PHE Program */
 
-    /* LEGEND */
+    /* ===== LEGEND ===== */
     .legend {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
       margin: 20px 0;
@@ -111,14 +125,15 @@
       border-radius: 4px;
       display: inline-block;
     }
-    .mobile-swatch {
-      background-color: #615EFF;
-    }
-    .social-swatch {
-      background-color: #4CD4BC;
-    }
+    .fnd-swatch { background-color: #FF9800; }
+    .em-swatch  { background-color: #F57C00; }
+    .sm-swatch  { background-color: #4CAF50; }
+    .mm-swatch  { background-color: #615EFF; }
+    .pf-swatch  { background-color: #E91E63; }
+    .si-swatch  { background-color: #4CD4BC; }
+    .phe-swatch { background-color: #FFC107; }
 
-    /* TOOLTIP */
+    /* ===== TOOLTIP ===== */
     .tooltip {
       position: fixed;
       background: rgba(0, 0, 0, 0.85);
@@ -126,17 +141,22 @@
       padding: 8px 12px;
       border-radius: 6px;
       font-size: 0.85em;
-      display: none; /* Hidden by default */
+      display: none; /* hidden by default */
       z-index: 9999;
       max-width: 220px;
       word-wrap: break-word;
-      pointer-events: none; /* so it won't steal hover */
+      pointer-events: none;
       transition: opacity 0.1s ease;
+    }
+
+    /* Hide months by default, display via JavaScript. */
+    .month-container {
+      display: none;
     }
 
     footer {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 40px 0 20px 0;
       font-size: 0.9em;
       color: #615EFF;
     }
@@ -149,559 +169,1090 @@
   </style>
 </head>
 <body>
-  <h1>Program Calendar (April &amp; May 2025)</h1>
+
+  <h1>Club Stride Program Calendar (Feb–May 2025)</h1>
 
   <div class="container">
+
+    <!-- MONTH SELECTOR -->
+    <div class="month-selector">
+      <label for="monthSelect">Select a Month:</label>
+      <select id="monthSelect">
+        <option value="Feb2025">February 2025</option>
+        <option value="Mar2025">March 2025</option>
+        <option value="Apr2025">April 2025</option>
+        <option value="May2025">May 2025</option>
+      </select>
+    </div>
+
     <!-- LEGEND -->
     <div class="legend">
       <div class="legend-item">
-        <span class="legend-swatch mobile-swatch"></span>
-        Mobile Marketing
+        <span class="legend-swatch fnd-swatch"></span>Foundational
       </div>
       <div class="legend-item">
-        <span class="legend-swatch social-swatch"></span>
-        Social Impact Program (YPAR)
+        <span class="legend-swatch em-swatch"></span>Email Marketing
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch sm-swatch"></span>Social Media
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch mm-swatch"></span>Mobile Marketing
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch pf-swatch"></span>Portfolio Prep
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch si-swatch"></span>YPAR
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch phe-swatch"></span>PHE Program
       </div>
     </div>
 
-    <!-- APRIL 2025 -->
-    <div class="month-title">April 2025</div>
-    <div class="calendar-grid">
-      <!-- HEADERS -->
-      <div class="day-header">Mon</div>
-      <div class="day-header">Tue</div>
-      <div class="day-header">Wed</div>
-      <div class="day-header">Thu</div>
-      <div class="day-header">Fri</div>
-      <div class="day-header">Sat</div>
-      <div class="day-header">Sun</div>
+    <!-- ======================= FEBRUARY 2025 ======================= -->
+    <div class="month-container" id="month-Feb2025">
+      <div class="month-title">February 2025</div>
+      <div class="calendar-grid">
+        <!-- HEADERS -->
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+        <div class="day-header">Sun</div>
 
-      <!-- April 1 is Tuesday in 2025, so offset Monday (Mar 31) with blank -->
-      <div class="day-cell"></div>
-      <!-- (1) Tue -->
-      <div class="day-cell">
-        <div class="date-number">1</div>
-      </div>
-      <!-- (2) Wed -->
-      <div class="day-cell">
-        <div class="date-number">2</div>
-      </div>
-      <!-- (3) Thu -->
-      <div class="day-cell">
-        <div class="date-number">3</div>
-      </div>
-      <!-- (4) Fri -->
-      <div class="day-cell">
-        <div class="date-number">4</div>
-      </div>
-      <!-- (5) Sat -->
-      <div class="day-cell">
-        <div class="date-number">5</div>
-      </div>
-      <!-- (6) Sun -->
-      <div class="day-cell">
-        <div class="date-number">6</div>
-      </div>
-      <!-- (7) Mon -->
-      <div class="day-cell">
-        <div class="date-number">7</div>
-      </div>
+        <!-- Feb 1 is Sat, offset Mon-Fri blank -->
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <!-- (1) Sat -->
+        <div class="day-cell">
+          <div class="date-number">1</div>
+        </div>
+        <!-- (2) Sun -->
+        <div class="day-cell">
+          <div class="date-number">2</div>
+        </div>
 
-      <!-- (8) Tue - YPAR Session #1 -->
-      <div class="day-cell">
-        <div class="date-number">8</div>
-        <span class="event si-event"
-          data-info="Session 1 (5:30–7:30 PM): Orientation & Introduction to Research Frameworks.
-- Overview of internship goals and expectations
-- Intro to public health, community needs assessment, and YPAR methodology
-- Team-building exercise: 'What are the needs in our community?'
-- Pre-training knowledge check quiz">
-          SI #1
-        </span>
-      </div>
-      <!-- (9) Wed -->
-      <div class="day-cell">
-        <div class="date-number">9</div>
-      </div>
+        <!-- (3) Mon -->
+        <div class="day-cell">
+          <div class="date-number">3</div>
+        </div>
+        <!-- (4) Tue -->
+        <div class="day-cell">
+          <div class="date-number">4</div>
+        </div>
+        <!-- (5) Wed -->
+        <div class="day-cell">
+          <div class="date-number">5</div>
+        </div>
+        <!-- (6) Thu -->
+        <div class="day-cell">
+          <div class="date-number">6</div>
+        </div>
+        <!-- (7) Fri -->
+        <div class="day-cell">
+          <div class="date-number">7</div>
+        </div>
+        <!-- (8) Sat -->
+        <div class="day-cell">
+          <div class="date-number">8</div>
+        </div>
+        <!-- (9) Sun -->
+        <div class="day-cell">
+          <div class="date-number">9</div>
+        </div>
 
-      <!-- (10) Thu - YPAR Session #2 -->
-      <div class="day-cell">
-        <div class="date-number">10</div>
-        <span class="event si-event"
-          data-info="Session 2 (5:30–7:30 PM): Ethics in Research & Intro to Survey Design.
-- Research ethics, informed consent, confidentiality
-- Understanding ethical risks and AI bias in research
-- Effective survey design with AI-assisted question generation
-- Assignment: Draft 3 original survey questions using AI tools">
-          SI #2
-        </span>
-      </div>
-      <!-- (11) Fri -->
-      <div class="day-cell">
-        <div class="date-number">11</div>
-      </div>
-      <!-- (12) Sat -->
-      <div class="day-cell">
-        <div class="date-number">12</div>
-      </div>
-      <!-- (13) Sun -->
-      <div class="day-cell">
-        <div class="date-number">13</div>
-      </div>
-      <!-- (14) Mon -->
-      <div class="day-cell">
-        <div class="date-number">14</div>
-      </div>
+        <!-- (10) Mon -->
+        <div class="day-cell">
+          <div class="date-number">10</div>
+        </div>
+        <!-- (11) Tue -->
+        <div class="day-cell">
+          <div class="date-number">11</div>
+        </div>
+        <!-- (12) Wed -->
+        <div class="day-cell">
+          <div class="date-number">12</div>
+        </div>
+        <!-- (13) Thu -->
+        <div class="day-cell">
+          <div class="date-number">13</div>
+        </div>
+        <!-- (14) Fri -->
+        <div class="day-cell">
+          <div class="date-number">14</div>
+        </div>
+        <!-- (15) Sat -->
+        <div class="day-cell">
+          <div class="date-number">15</div>
+        </div>
+        <!-- (16) Sun -->
+        <div class="day-cell">
+          <div class="date-number">16</div>
+        </div>
 
-      <!-- (15) Tue - YPAR Session #3 -->
-      <div class="day-cell">
-        <div class="date-number">15</div>
-        <span class="event si-event"
-          data-info="Session 3 (5:30–7:30 PM): AI-Enhanced Survey Design Workshop.
-- Advanced survey structure: sequencing, logic, branching
-- Digital tools for survey creation with AI integration
-- QR code generation and distribution strategies
-- Group breakout sessions for survey development">
-          SI #3
-        </span>
-      </div>
-      <!-- (16) Wed -->
-      <div class="day-cell">
-        <div class="date-number">16</div>
-      </div>
+        <!-- (17) Mon -->
+        <div class="day-cell">
+          <div class="date-number">17</div>
+        </div>
+        <!-- (18) Tue -->
+        <div class="day-cell">
+          <div class="date-number">18</div>
+        </div>
+        <!-- (19) Wed -->
+        <div class="day-cell">
+          <div class="date-number">19</div>
+        </div>
+        <!-- (20) Thu -->
+        <div class="day-cell">
+          <div class="date-number">20</div>
+        </div>
+        <!-- (21) Fri -->
+        <div class="day-cell">
+          <div class="date-number">21</div>
+        </div>
+        <!-- (22) Sat -->
+        <div class="day-cell">
+          <div class="date-number">22</div>
+        </div>
+        <!-- (23) Sun -->
+        <div class="day-cell">
+          <div class="date-number">23</div>
+        </div>
 
-      <!-- (17) Thu - YPAR Session #4 -->
-      <div class="day-cell">
-        <div class="date-number">17</div>
-        <span class="event si-event"
-          data-info="Session 4 (5:30–7:30 PM): Interview, Focus Group & Data Collection Planning.
-- Structure of interviews and focus groups
-- Facilitation strategies and active listening
-- Introduction to NLP tools for qualitative data analysis
-- Creation of data collection instruments with team role assignments">
-          SI #4
-        </span>
-      </div>
-      <!-- (18) Fri -->
-      <div class="day-cell">
-        <div class="date-number">18</div>
-      </div>
-      <!-- (19) Sat -->
-      <div class="day-cell">
-        <div class="date-number">19</div>
-      </div>
-      <!-- (20) Sun -->
-      <div class="day-cell">
-        <div class="date-number">20</div>
-      </div>
-
-      <!-- (21) Mon - Mobile Mktg #1 -->
-      <div class="day-cell">
-        <div class="date-number">21</div>
-        <span class="event mm-event"
-          data-info="Mobile Marketing Week 1 (5:30–7 PM): Introduction to Mobile Marketing.
-- Importance of mobile-first strategies
-- Introduction to mobile UX and engagement principles
-- Overview of mobile marketing trends and tools
-- Assessment: Mobile-friendly campaign evaluation">
-          MM #1
-        </span>
-      </div>
-
-      <!-- (22) Tue - YPAR Session #5 -->
-      <div class="day-cell">
-        <div class="date-number">22</div>
-        <span class="event si-event"
-          data-info="Session 5 (5:30–7:30 PM): Community Outreach Strategy & Survey Launch.
-- Finalize personal and team-based outreach plans
-- Review community asset map and distribution points
-- Practice peer-to-peer outreach conversations
-- Prepare outreach tracking templates and QR code flyers">
-          SI #5
-        </span>
-      </div>
-      <!-- (23) Wed -->
-      <div class="day-cell">
-        <div class="date-number">23</div>
-      </div>
-
-      <!-- (24) Thu - YPAR Session #6 -->
-      <div class="day-cell">
-        <div class="date-number">24</div>
-        <span class="event si-event"
-          data-info="Session 6 (5:30–7:30 PM): Survey Distribution & Data Preprocessing.
-- Execute active survey outreach in community locations
-- Share initial field experiences, successes, and barriers
-- Introduction to data preprocessing and cleaning techniques
-- Hands-on practice with data formatting and organization">
-          SI #6
-        </span>
-      </div>
-      <!-- (25) Fri -->
-      <div class="day-cell">
-        <div class="date-number">25</div>
-      </div>
-      <!-- (26) Sat -->
-      <div class="day-cell">
-        <div class="date-number">26</div>
-      </div>
-      <!-- (27) Sun -->
-      <div class="day-cell">
-        <div class="date-number">27</div>
-      </div>
-
-      <!-- (28) Mon - Mobile Mktg #2 -->
-      <div class="day-cell">
-        <div class="date-number">28</div>
-        <span class="event mm-event"
-          data-info="Mobile Marketing Week 2 (5:30–7 PM): SMS Marketing & Push Notifications.
-- How SMS and push notification campaigns work
-- Best practices for messaging, timing, and audience segmentation
-- Hands-on: Designing an SMS campaign message
-- Assessment: Analyze a sample SMS marketing campaign">
-          MM #2
-        </span>
-      </div>
-
-      <!-- (29) Tue - YPAR Session #7 -->
-      <div class="day-cell">
-        <div class="date-number">29</div>
-        <span class="event si-event"
-          data-info="Session 7 (5:30–7:30 PM): Qualitative Data Collection & Initial NLP Analysis.
-- Conduct one-on-one interviews or small focus groups
-- Practice notetaking, quoting, and summarizing themes
-- Introduction to NLP tools for qualitative analysis
-- Assignment: Submit summary highlights from interview/focus group">
-          SI #7
-        </span>
-      </div>
-
-      <!-- (30) Wed - Mobile Mktg #3 -->
-      <div class="day-cell">
-        <div class="date-number">30</div>
-        <span class="event mm-event"
-          data-info="Mobile Marketing Week 3 (5:30–7 PM): Mobile Ad Strategies & App Marketing.
-- Best practices for mobile advertising and ad placement
-- Overview of app marketing techniques and App Store Optimization
-- Hands-on: Design a mobile ad and optimize an app listing
-- Assessment: Ad critique and app store listing analysis">
-          MM #3
-        </span>
+        <!-- (24) Mon -->
+        <div class="day-cell">
+          <div class="date-number">24</div>
+        </div>
+        <!-- (25) Tue -->
+        <div class="day-cell">
+          <div class="date-number">25</div>
+        </div>
+        <!-- (26) Wed -->
+        <div class="day-cell">
+          <div class="date-number">26</div>
+        </div>
+        <!-- (27) Thu -->
+        <div class="day-cell">
+          <div class="date-number">27</div>
+        </div>
+        <!-- (28) Fri - Foundational Wk1 -->
+        <div class="day-cell">
+          <div class="date-number">28</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk1 (4:00–5:30 PM): Orientation
+- Foundational + Email/Social/Mobile concurrency
+- Complete forms, overview of digital marketing careers
+- Q&amp;A, next steps">
+            FND #1
+          </span>
+        </div>
+        <!-- (Mar 1) Sat -->
+        <div class="day-cell"></div>
       </div>
     </div>
 
-    <!-- MAY 2025 -->
-    <div class="month-title" style="margin-top:30px;">May 2025</div>
-    <div class="calendar-grid">
-      <!-- HEADERS -->
-      <div class="day-header">Mon</div>
-      <div class="day-header">Tue</div>
-      <div class="day-header">Wed</div>
-      <div class="day-header">Thu</div>
-      <div class="day-header">Fri</div>
-      <div class="day-header">Sat</div>
-      <div class="day-header">Sun</div>
+    <!-- ======================= MARCH 2025 ======================= -->
+    <div class="month-container" id="month-Mar2025">
+      <div class="month-title">March 2025</div>
+      <div class="calendar-grid">
+        <!-- HEADERS -->
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+        <div class="day-header">Sun</div>
 
-      <!-- May starts on Thursday (5/1/2025), so blank Mon-Wed -->
-      <div class="day-cell"></div>
-      <div class="day-cell"></div>
-      <div class="day-cell"></div>
+        <!-- offset so Mar 1 is Sat -->
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <!-- (1) Sat -->
+        <div class="day-cell">
+          <div class="date-number">1</div>
+        </div>
+        <!-- (2) Sun -->
+        <div class="day-cell">
+          <div class="date-number">2</div>
+        </div>
 
-      <!-- (1) Thu - YPAR #8 -->
-      <div class="day-cell">
-        <div class="date-number">1</div>
-        <span class="event si-event"
-          data-info="Session 8 (5:30–7:30 PM): Mid-Phase Survey Review & Exploratory Data Analysis.
-- Review survey response data and discuss what's working
-- Introduction to Exploratory Data Analysis techniques
-- Peer collaboration to identify outreach strategies
-- Assignment: Update outreach plan and prepare initial data visualizations">
-          SI #8
-        </span>
-      </div>
-      <!-- (2) Fri -->
-      <div class="day-cell">
-        <div class="date-number">2</div>
-      </div>
-      <!-- (3) Sat -->
-      <div class="day-cell">
-        <div class="date-number">3</div>
-      </div>
-      <!-- (4) Sun -->
-      <div class="day-cell">
-        <div class="date-number">4</div>
-      </div>
+        <!-- (3) Mon -->
+        <div class="day-cell">
+          <div class="date-number">3</div>
+        </div>
+        <!-- (4) Tue -->
+        <div class="day-cell">
+          <div class="date-number">4</div>
+        </div>
+        <!-- (5) Wed - Foundational Wk2 -->
+        <div class="day-cell">
+          <div class="date-number">5</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk2 (5:30–7:00 PM): Digital Marketing Strategy
+- Channels: PPC, Social, Email
+- Quiz on strategy fundamentals">
+            FND #2
+          </span>
+        </div>
+        <!-- (6) Thu -->
+        <div class="day-cell">
+          <div class="date-number">6</div>
+        </div>
+        <!-- (7) Fri -->
+        <div class="day-cell">
+          <div class="date-number">7</div>
+        </div>
+        <!-- (8) Sat -->
+        <div class="day-cell">
+          <div class="date-number">8</div>
+        </div>
+        <!-- (9) Sun -->
+        <div class="day-cell">
+          <div class="date-number">9</div>
+        </div>
 
-      <!-- (5) Mon - Mobile Mktg #4 -->
-      <div class="day-cell">
-        <div class="date-number">5</div>
-        <span class="event mm-event"
-          data-info="Mobile Marketing Week 4 (5:30–7 PM): Building a Mobile Marketing Strategy.
-- Integrating mobile strategies into a cohesive marketing plan
-- Planning for user engagement and personalization
-- Hands-on: Presenting a complete mobile marketing strategy
-- Assessment: Final project presentation and peer review">
-          MM #4
-        </span>
-      </div>
+        <!-- (10) Mon - Foundational Wk3 -->
+        <div class="day-cell">
+          <div class="date-number">10</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk3 (5:30–7:00 PM): Social Media &amp; Email Basics
+- Organic vs paid social
+- Email fundamentals (open rate, CTR)
+- ChatGPT for social copy">
+            FND #3
+          </span>
+        </div>
+        <!-- (11) Tue -->
+        <div class="day-cell">
+          <div class="date-number">11</div>
+        </div>
+        <!-- (12) Wed -->
+        <div class="day-cell">
+          <div class="date-number">12</div>
+        </div>
+        <!-- (13) Thu -->
+        <div class="day-cell">
+          <div class="date-number">13</div>
+        </div>
+        <!-- (14) Fri -->
+        <div class="day-cell">
+          <div class="date-number">14</div>
+        </div>
+        <!-- (15) Sat -->
+        <div class="day-cell">
+          <div class="date-number">15</div>
+        </div>
+        <!-- (16) Sun -->
+        <div class="day-cell">
+          <div class="date-number">16</div>
+        </div>
 
-      <!-- (6) Tue - YPAR #9 -->
-      <div class="day-cell">
-        <div class="date-number">6</div>
-        <span class="event si-event"
-          data-info="Session 9 (5:30–7:30 PM): Advanced Data Analysis & AI-Enhanced Pattern Recognition.
-- Application of statistical analysis and pattern identification
-- Introduction to AI tools for predictive modeling
-- Sorting and coding open-ended survey responses with NLP
-- Assignment: Submit three major AI-enhanced findings from survey data">
-          SI #9
-        </span>
-      </div>
+        <!-- (17) Mon - Foundational Wk4 -->
+        <div class="day-cell">
+          <div class="date-number">17</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk4 (5:30–7:00 PM): PPC &amp; Google Ads
+- Intro to Paid Search &amp; Display
+- Bidding, keywords, ad workshop">
+            FND #4
+          </span>
+        </div>
+        <!-- (18) Tue -->
+        <div class="day-cell">
+          <div class="date-number">18</div>
+        </div>
+        <!-- (19) Wed - Specialization Wk1 (Email, Social) -->
+        <div class="day-cell">
+          <div class="date-number">19</div>
+          <span class="event em-event"
+            data-info="Email Marketing Wk1:
+Intro &amp; compliance (CAN-SPAM, GDPR)
+Mailchimp setup">
+            EM #1
+          </span>
+          <span class="event sm-event"
+            data-info="Social Media Wk1:
+Major platforms, demographics
+FB, IG, TikTok overview">
+            SM #1
+          </span>
+        </div>
+        <!-- (20) Thu -->
+        <div class="day-cell">
+          <div class="date-number">20</div>
+        </div>
+        <!-- (21) Fri -->
+        <div class="day-cell">
+          <div class="date-number">21</div>
+        </div>
+        <!-- (22) Sat -->
+        <div class="day-cell">
+          <div class="date-number">22</div>
+        </div>
+        <!-- (23) Sun -->
+        <div class="day-cell">
+          <div class="date-number">23</div>
+        </div>
 
-      <!-- (7) Wed - Mobile Mktg Portfolio #1 -->
-      <div class="day-cell">
-        <div class="date-number">7</div>
-        <span class="event mm-event"
-          data-info="Portfolio Building Class 1 (5:30–7 PM): Digital Marketing Portfolio – Part 1.
-- Selecting and refining projects from specialization track
-- Writing structured case studies: goals, strategy, execution, results
-- Intro to free website builders
-- Organizing and formatting portfolio content">
-          MM Portfolio 1
-        </span>
-      </div>
+        <!-- (24) Mon - Foundational Wk5 -->
+        <div class="day-cell">
+          <div class="date-number">24</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk5 (5:30–7 PM): Google Analytics &amp; SEO
+- On-page vs off-page SEO
+- ChatGPT for meta descriptions">
+            FND #5
+          </span>
+        </div>
+        <!-- (25) Tue -->
+        <div class="day-cell">
+          <div class="date-number">25</div>
+        </div>
+        <!-- (26) Wed - Specialization Wk2 -->
+        <div class="day-cell">
+          <div class="date-number">26</div>
+          <span class="event em-event"
+            data-info="Email Mktg Wk2:
+Writing subject lines &amp; CTAs
+ChatGPT brainstorming">
+            EM #2
+          </span>
+          <span class="event sm-event"
+            data-info="Social Media Wk2:
+Creating high-performing content
+Visual storytelling, short videos">
+            SM #2
+          </span>
+        </div>
+        <!-- (27) Thu -->
+        <div class="day-cell">
+          <div class="date-number">27</div>
+        </div>
+        <!-- (28) Fri -->
+        <div class="day-cell">
+          <div class="date-number">28</div>
+        </div>
+        <!-- (29) Sat -->
+        <div class="day-cell">
+          <div class="date-number">29</div>
+        </div>
+        <!-- (30) Sun -->
+        <div class="day-cell">
+          <div class="date-number">30</div>
+        </div>
 
-      <!-- (8) Thu - YPAR #10 -->
-      <div class="day-cell">
-        <div class="date-number">8</div>
-        <span class="event si-event"
-          data-info="Session 10 (5:30–7:30 PM): Advanced Visualization & Data Storytelling Workshop.
-- Creating interactive dashboards and visual storytelling
-- Integrating qualitative and quantitative data visualization
-- Ethical considerations in AI-driven analytics
-- Assignment: Create one interactive data visualization dashboard">
-          SI #10
-        </span>
+        <!-- (31) Mon - Foundational Wk6 -->
+        <div class="day-cell">
+          <div class="date-number">31</div>
+          <span class="event fnd-event"
+            data-info="Foundational Wk6 (5:30–7 PM): Mobile Mktg &amp; Final Review
+- Mobile-first basics, SMS best practices
+- Recap entire Foundational content">
+            FND #6
+          </span>
+        </div>
+        <!-- blank for next month -->
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
       </div>
-      <!-- (9) Fri - Mobile Mktg Portfolio #2 -->
-      <div class="day-cell">
-        <div class="date-number">9</div>
-        <span class="event mm-event"
-          data-info="Portfolio Building Class 2 (5:30–7 PM): Portfolio Dev Part 2 + Resume Optimization.
-- Finalizing and polishing portfolio layout and content
-- Resume writing fundamentals for marketing roles
-- Tips for tailoring resumes to job descriptions
-- Overview of free resume-building tools">
-          MM Portfolio 2
-        </span>
-      </div>
-      <!-- (10) Sat -->
-      <div class="day-cell">
-        <div class="date-number">10</div>
-      </div>
-      <!-- (11) Sun -->
-      <div class="day-cell">
-        <div class="date-number">11</div>
-      </div>
-      <!-- (12) Mon -->
-      <div class="day-cell">
-        <div class="date-number">12</div>
-      </div>
+    </div>
 
-      <!-- (13) Tue - YPAR #11 -->
-      <div class="day-cell">
-        <div class="date-number">13</div>
-        <span class="event si-event"
-          data-info="Session 11 (5:30–7:30 PM): Machine Learning Applications & Report Planning.
-- Intro to practical ML apps in community research
-- Hands-on topic modeling/sentiment analysis
-- Report component planning & AI-assisted content summarization">
-          SI #11
-        </span>
-      </div>
+    <!-- ======================= APRIL 2025 ======================= -->
+    <div class="month-container" id="month-Apr2025">
+      <div class="month-title">April 2025</div>
+      <div class="calendar-grid">
+        <!-- HEADERS -->
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+        <div class="day-header">Sun</div>
 
-      <!-- (14) Wed - Mobile Mktg Portfolio #3 -->
-      <div class="day-cell">
-        <div class="date-number">14</div>
-        <span class="event mm-event"
-          data-info="Portfolio Building Class 3 (5:30–7 PM): Portfolio Showcase & Final Review.
-- Presentation skills for digital marketing portfolios
-- Communicating the value of completed projects
-- Activities: Present completed portfolios, feedback
-- Final portfolio review, completion checklist">
-          MM Portfolio 3
-        </span>
-      </div>
+        <!-- (offset) Apr 1 is Tue, so blank for Monday -->
+        <div class="day-cell"></div>
+        <!-- (1) Tue -->
+        <div class="day-cell">
+          <div class="date-number">1</div>
+        </div>
+        <!-- (2) Wed - Specialization Wk3 -->
+        <div class="day-cell">
+          <div class="date-number">2</div>
+          <span class="event em-event"
+            data-info="Email Wk3:
+Audience segmentation &amp; automation
+Mailchimp drip campaigns">
+            EM #3
+          </span>
+          <span class="event sm-event"
+            data-info="Social Wk3:
+Analytics &amp; engagement
+Using ChatGPT for captions">
+            SM #3
+          </span>
+        </div>
+        <!-- (3) Thu -->
+        <div class="day-cell">
+          <div class="date-number">3</div>
+        </div>
+        <!-- (4) Fri -->
+        <div class="day-cell">
+          <div class="date-number">4</div>
+        </div>
+        <!-- (5) Sat -->
+        <div class="day-cell">
+          <div class="date-number">5</div>
+        </div>
+        <!-- (6) Sun -->
+        <div class="day-cell">
+          <div class="date-number">6</div>
+        </div>
+        <!-- (7) Mon -->
+        <div class="day-cell">
+          <div class="date-number">7</div>
+        </div>
 
-      <!-- (15) Thu - YPAR #12 -->
-      <div class="day-cell">
-        <div class="date-number">15</div>
-        <span class="event si-event"
-          data-info="Session 12 (5:30–7:30 PM): Collaborative Main Event.
-- Present community needs assessment findings
-- Demonstration of AI tools and data insights
-- Q&A session and real-time feedback
-- Distribution of digital/printed reports">
-          SI #12
-        </span>
-      </div>
-      <!-- (16) Fri -->
-      <div class="day-cell">
-        <div class="date-number">16</div>
-      </div>
-      <!-- (17) Sat -->
-      <div class="day-cell">
-        <div class="date-number">17</div>
-      </div>
-      <!-- (18) Sun -->
-      <div class="day-cell">
-        <div class="date-number">18</div>
-      </div>
-      <!-- (19) Mon -->
-      <div class="day-cell">
-        <div class="date-number">19</div>
-      </div>
+        <!-- (8) Tue - YPAR #1 + PHE M4-S1 -->
+        <div class="day-cell">
+          <div class="date-number">8</div>
+          <span class="event si-event"
+            data-info="YPAR #1:
+Orientation, goals, intro to YPAR">
+            SI #1
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S1 (5:30–7:30 PM):
+Contact potential health agencies,
+Draft marketing materials,
+Preliminary needs assessment">
+            PHE M4-S1
+          </span>
+        </div>
+        <!-- (9) Wed - Spec Wk4 -->
+        <div class="day-cell">
+          <div class="date-number">9</div>
+          <span class="event em-event"
+            data-info="Email Wk4:
+A/B Testing &amp; Deliverability
+Bounce rates, spam scores, reputation">
+            EM #4
+          </span>
+          <span class="event sm-event"
+            data-info="Social Wk4:
+Paid social ads (FB/IG)
+Audience targeting &amp; ad creatives">
+            SM #4
+          </span>
+        </div>
 
-      <!-- (20) Tue - YPAR #13 -->
-      <div class="day-cell">
-        <div class="date-number">20</div>
-        <span class="event si-event"
-          data-info="Session 13 (5:30–7:30 PM): Final Report & Interactive Presentation Design.
-- Integrate AI insights & advanced visualizations
-- Develop Q&A prep & stakeholder engagement
-- Submit final report contribution & presentation visuals">
-          SI #13
-        </span>
-      </div>
-      <!-- (21) Wed -->
-      <div class="day-cell">
-        <div class="date-number">21</div>
-      </div>
+        <!-- (10) Thu - YPAR #2 + PHE M4-S2 -->
+        <div class="day-cell">
+          <div class="date-number">10</div>
+          <span class="event si-event"
+            data-info="YPAR #2:
+Research ethics, AI bias,
+Draft 3 AI-based survey questions">
+            SI #2
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S2:
+Refine partner outreach, confirm partner roles,
+Update marketing materials for career focus">
+            PHE M4-S2
+          </span>
+        </div>
+        <!-- (11) Fri -->
+        <div class="day-cell">
+          <div class="date-number">11</div>
+        </div>
+        <!-- (12) Sat -->
+        <div class="day-cell">
+          <div class="date-number">12</div>
+        </div>
+        <!-- (13) Sun -->
+        <div class="day-cell">
+          <div class="date-number">13</div>
+        </div>
+        <!-- (14) Mon -->
+        <div class="day-cell">
+          <div class="date-number">14</div>
+        </div>
 
-      <!-- (22) Thu - YPAR #14 -->
-      <div class="day-cell">
-        <div class="date-number">22</div>
-        <span class="event si-event"
-          data-info="Session 14 (5:30–7:30 PM): Presentation Rehearsal & Sustainability Planning.
-- Public speaking & data presentation techniques
-- Draft sustainability roadmap for continued research
-- Peer feedback, refine presentation & plan">
-          SI #14
-        </span>
-      </div>
-      <!-- (23) Fri -->
-      <div class="day-cell">
-        <div class="date-number">23</div>
-      </div>
-      <!-- (24) Sat -->
-      <div class="day-cell">
-        <div class="date-number">24</div>
-      </div>
-      <!-- (25) Sun -->
-      <div class="day-cell">
-        <div class="date-number">25</div>
-      </div>
-      <!-- (26) Mon -->
-      <div class="day-cell">
-        <div class="date-number">26</div>
-      </div>
+        <!-- (15) Tue - YPAR #3 + PHE M4-S3 -->
+        <div class="day-cell">
+          <div class="date-number">15</div>
+          <span class="event si-event"
+            data-info="YPAR #3:
+Advanced survey logic &amp; branching,
+AI integration w/ forms">
+            SI #3
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S3:
+Practice leadership for career-focused workshop,
+Refine interactive materials,
+Promote PH career opportunities">
+            PHE M4-S3
+          </span>
+        </div>
+        <!-- (16) Wed - Spec Wk5 -->
+        <div class="day-cell">
+          <div class="date-number">16</div>
+          <span class="event em-event"
+            data-info="Email Wk5:
+Designing an email campaign,
+High-converting content">
+            EM #5
+          </span>
+          <span class="event sm-event"
+            data-info="Social Wk5:
+Influencer marketing &amp; collabs,
+Mock outreach strategy">
+            SM #5
+          </span>
+        </div>
 
-      <!-- (27) Tue - YPAR #15 -->
-      <div class="day-cell">
-        <div class="date-number">27</div>
-        <span class="event si-event"
-          data-info="Session 15 (5:30–7:30 PM): Unified Sustainability Planning.
-- Analyze impact from main event
-- Develop integrated sustainability plan
-- Micro-projects using YPAR data insights
-- Prepare final reflection & personal dev plan">
-          SI #15
-        </span>
-      </div>
-      <!-- (28) Wed -->
-      <div class="day-cell">
-        <div class="date-number">28</div>
-      </div>
+        <!-- (17) Thu - YPAR #4 + PHE M4-S4 -->
+        <div class="day-cell">
+          <div class="date-number">17</div>
+          <span class="event si-event"
+            data-info="YPAR #4:
+Interviews, focus group methods,
+NLP for qualitative data">
+            SI #4
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S4:
+Finalize workshop logistics,
+Assign event-day roles,
+Schedule flyers &amp; announcements">
+            PHE M4-S4
+          </span>
+        </div>
+        <!-- (18) Fri -->
+        <div class="day-cell">
+          <div class="date-number">18</div>
+        </div>
+        <!-- (19) Sat -->
+        <div class="day-cell">
+          <div class="date-number">19</div>
+        </div>
+        <!-- (20) Sun -->
+        <div class="day-cell">
+          <div class="date-number">20</div>
+        </div>
 
-      <!-- (29) Thu - YPAR #16 -->
-      <div class="day-cell">
-        <div class="date-number">29</div>
-        <span class="event si-event"
-          data-info="Session 16 (5:30–7:30 PM): Career Pathways & Program Conclusion.
-- Explore career ops in data science & advocacy
-- Personal reflection on skill development
-- Program evaluation & feedback
-- Certificates & celebration of accomplishments">
-          SI #16
-        </span>
+        <!-- (21) Mon - Mobile Mktg #1 -->
+        <div class="day-cell">
+          <div class="date-number">21</div>
+          <span class="event mm-event"
+            data-info="Mobile Mktg Wk1 (5:30–7 PM):
+Intro to mobile-first strategies,
+Mobile UX &amp; engagement,
+Trends &amp; tools">
+            MM #1
+          </span>
+        </div>
+        <!-- (22) Tue - YPAR #5 + PHE M4-S5 -->
+        <div class="day-cell">
+          <div class="date-number">22</div>
+          <span class="event si-event"
+            data-info="YPAR #5:
+Finalize outreach plans,
+Peer-to-peer outreach practice,
+Prep flyers &amp; QR codes">
+            SI #5
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S5:
+Finalize &amp; rehearse workshop presentations,
+Use visual aids,
+Practice audience-specific messaging">
+            PHE M4-S5
+          </span>
+        </div>
+        <!-- (23) Wed - Spec Wk6 -->
+        <div class="day-cell">
+          <div class="date-number">23</div>
+          <span class="event em-event"
+            data-info="Email Wk6:
+Analyzing performance &amp; optimization,
+Open rates, CTR, conversions">
+            EM #6
+          </span>
+          <span class="event sm-event"
+            data-info="Social Wk6:
+Strategy &amp; campaign planning,
+Final presentation">
+            SM #6
+          </span>
+        </div>
+
+        <!-- (24) Thu - YPAR #6 + PHE M4-S6 -->
+        <div class="day-cell">
+          <div class="date-number">24</div>
+          <span class="event si-event"
+            data-info="YPAR #6:
+Survey distribution &amp; data preprocessing,
+Cleaning &amp; formatting">
+            SI #6
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S6:
+In-class presentation about main event,
+Simulate stakeholder interactions,
+Gather feedback">
+            PHE M4-S6
+          </span>
+        </div>
+        <!-- (25) Fri -->
+        <div class="day-cell">
+          <div class="date-number">25</div>
+        </div>
+        <!-- (26) Sat -->
+        <div class="day-cell">
+          <div class="date-number">26</div>
+        </div>
+        <!-- (27) Sun -->
+        <div class="day-cell">
+          <div class="date-number">27</div>
+        </div>
+
+        <!-- (28) Mon - Mobile Mktg #2 -->
+        <div class="day-cell">
+          <div class="date-number">28</div>
+          <span class="event mm-event"
+            data-info="Mobile Mktg Wk2 (5:30–7 PM):
+SMS &amp; push notifications,
+Timing &amp; segmentation,
+Designing SMS campaign">
+            MM #2
+          </span>
+        </div>
+
+        <!-- (29) Tue - YPAR #7 + PHE M4-S7 -->
+        <div class="day-cell">
+          <div class="date-number">29</div>
+          <span class="event si-event"
+            data-info="YPAR #7:
+Interviews/focus groups,
+Notetaking, NLP analysis">
+            SI #7
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S7:
+Refine workshop outlines &amp; booth materials,
+Revise interactive elements,
+Group review of all materials">
+            PHE M4-S7
+          </span>
+        </div>
+        <!-- (30) Wed - Mobile Mktg #3 -->
+        <div class="day-cell">
+          <div class="date-number">30</div>
+          <span class="event mm-event"
+            data-info="Mobile Mktg Wk3 (5:30–7 PM):
+Mobile Ad Strategies &amp; App Marketing,
+Ad placement, ASO fundamentals,
+Design mobile ad">
+            MM #3
+          </span>
+        </div>
       </div>
-      <!-- (30) Fri -->
-      <div class="day-cell">
-        <div class="date-number">30</div>
-      </div>
-      <!-- (31) Sat -->
-      <div class="day-cell">
-        <div class="date-number">31</div>
+    </div>
+
+    <!-- ======================= MAY 2025 ======================= -->
+    <div class="month-container" id="month-May2025">
+      <div class="month-title">May 2025</div>
+      <div class="calendar-grid">
+        <!-- HEADERS -->
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+        <div class="day-header">Sun</div>
+
+        <!-- offset for May 1 (Thu) -->
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+        <div class="day-cell"></div>
+
+        <!-- (1) Thu - YPAR #8 + PHE M4-S8 -->
+        <div class="day-cell">
+          <div class="date-number">1</div>
+          <span class="event si-event"
+            data-info="YPAR #8:
+Mid-Phase Survey Review &amp; EDA">
+            SI #8
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S8:
+Final presentation rehearsal,
+Review pre-event checklist,
+Overall event readiness">
+            PHE M4-S8
+          </span>
+        </div>
+        <!-- (2) Fri -->
+        <div class="day-cell">
+          <div class="date-number">2</div>
+        </div>
+        <!-- (3) Sat -->
+        <div class="day-cell">
+          <div class="date-number">3</div>
+        </div>
+        <!-- (4) Sun -->
+        <div class="day-cell">
+          <div class="date-number">4</div>
+        </div>
+
+        <!-- (5) Mon - Mobile Mktg #4 -->
+        <div class="day-cell">
+          <div class="date-number">5</div>
+          <span class="event mm-event"
+            data-info="Mobile Mktg Wk4 (5:30–7 PM):
+Building a mobile strategy,
+User engagement &amp; personalization,
+Final project presentation">
+            MM #4
+          </span>
+        </div>
+
+        <!-- (6) Tue - YPAR #9 + PHE M4-S9 -->
+        <div class="day-cell">
+          <div class="date-number">6</div>
+          <span class="event si-event"
+            data-info="YPAR #9:
+Advanced Data Analysis &amp; AI pattern recognition">
+            SI #9
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S9:
+Confirm partner commitments &amp; roles,
+Finalize venue &amp; logistics,
+Coordinate social media,
+Develop contingency plans">
+            PHE M4-S9
+          </span>
+        </div>
+
+        <!-- (7) Wed - Portfolio Class 1 -->
+        <div class="day-cell">
+          <div class="date-number">7</div>
+          <span class="event pf-event"
+            data-info="Portfolio Class 1 (5:30–7 PM):
+Select &amp; refine projects,
+Write case studies,
+Intro to free site builders,
+Organize portfolio">
+            PF #1
+          </span>
+        </div>
+
+        <!-- (8) Thu - YPAR #10 + PHE M4-S10 -->
+        <div class="day-cell">
+          <div class="date-number">8</div>
+          <span class="event si-event"
+            data-info="YPAR #10:
+Advanced Visualization &amp; Data Storytelling">
+            SI #10
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S10:
+Onsite final check for booth setups,
+Align onsite &amp; digital,
+Last-minute adjustments">
+            PHE M4-S10
+          </span>
+        </div>
+        <!-- (9) Fri - Portfolio Class 2 -->
+        <div class="day-cell">
+          <div class="date-number">9</div>
+          <span class="event pf-event"
+            data-info="Portfolio Class 2 (5:30–7 PM):
+Finalize layout &amp; content,
+Resume writing fundamentals,
+Peer resume critique,
+Submit portfolio/resume">
+            PF #2
+          </span>
+        </div>
+        <!-- (10) Sat -->
+        <div class="day-cell">
+          <div class="date-number">10</div>
+        </div>
+        <!-- (11) Sun -->
+        <div class="day-cell">
+          <div class="date-number">11</div>
+        </div>
+
+        <!-- (12) Mon -->
+        <div class="day-cell">
+          <div class="date-number">12</div>
+        </div>
+
+        <!-- (13) Tue - YPAR #11 + PHE M4-S11 -->
+        <div class="day-cell">
+          <div class="date-number">13</div>
+          <span class="event si-event"
+            data-info="YPAR #11:
+ML apps in community research,
+Topic modeling &amp; sentiment analysis,
+Report planning">
+            SI #11
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S11:
+Final review of event setup,
+Rehearse youth-led workshops,
+Finalize data collection strategy">
+            PHE M4-S11
+          </span>
+        </div>
+
+        <!-- (14) Wed - Portfolio Class 3 -->
+        <div class="day-cell">
+          <div class="date-number">14</div>
+          <span class="event pf-event"
+            data-info="Portfolio Class 3 (5:30–7 PM):
+Portfolio showcase &amp; final review,
+Presentation skills,
+Peer feedback,
+Final assessment">
+            PF #3
+          </span>
+        </div>
+
+        <!-- (15) Thu - YPAR #12 + PHE M4-S12 -->
+        <div class="day-cell">
+          <div class="date-number">15</div>
+          <span class="event si-event"
+            data-info="YPAR #12:
+Collaborative Main Event,
+Present findings &amp; data insights">
+            SI #12
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S12:
+Main Event Execution,
+Youth-led workshops, data collection,
+Partner coordination">
+            PHE M4-S12
+          </span>
+        </div>
+        <!-- (16) Fri -->
+        <div class="day-cell">
+          <div class="date-number">16</div>
+        </div>
+        <!-- (17) Sat -->
+        <div class="day-cell">
+          <div class="date-number">17</div>
+        </div>
+        <!-- (18) Sun -->
+        <div class="day-cell">
+          <div class="date-number">18</div>
+        </div>
+
+        <!-- (19) Mon -->
+        <div class="day-cell">
+          <div class="date-number">19</div>
+        </div>
+        <!-- (20) Tue - YPAR #13 + PHE M4-S13 -->
+        <div class="day-cell">
+          <div class="date-number">20</div>
+          <span class="event si-event"
+            data-info="YPAR #13:
+Review partner feedback,
+Sustainability planning">
+            SI #13
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M4-S13:
+Review feedback from main event,
+Reflection on lessons learned,
+Begin sustainability plan">
+            PHE M4-S13
+          </span>
+        </div>
+        <!-- (21) Wed -->
+        <div class="day-cell">
+          <div class="date-number">21</div>
+        </div>
+        <!-- (22) Thu - YPAR #14 + PHE M5-S1 -->
+        <div class="day-cell">
+          <div class="date-number">22</div>
+          <span class="event si-event"
+            data-info="YPAR #14:
+Presentation rehearsal &amp; sustainability planning">
+            SI #14
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M5-S1:
+Map resources &amp; partnerships,
+Review successes/challenges,
+Identify future youth leaders">
+            PHE M5-S1
+          </span>
+        </div>
+        <!-- (23) Fri -->
+        <div class="day-cell">
+          <div class="date-number">23</div>
+        </div>
+        <!-- (24) Sat -->
+        <div class="day-cell">
+          <div class="date-number">24</div>
+        </div>
+        <!-- (25) Sun -->
+        <div class="day-cell">
+          <div class="date-number">25</div>
+        </div>
+        <!-- (26) Mon -->
+        <div class="day-cell">
+          <div class="date-number">26</div>
+        </div>
+
+        <!-- (27) Tue - YPAR #15 + PHE M5-S2 -->
+        <div class="day-cell">
+          <div class="date-number">27</div>
+          <span class="event si-event"
+            data-info="YPAR #15:
+Analyze main event impact data,
+Develop integrated sustainability plan">
+            SI #15
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M5-S2:
+Finalize partnership roadmap,
+Plan micro-events to sustain engagement,
+Integrate campaign data into future planning">
+            PHE M5-S2
+          </span>
+        </div>
+        <!-- (28) Wed -->
+        <div class="day-cell">
+          <div class="date-number">28</div>
+        </div>
+        <!-- (29) Thu - YPAR #16 + PHE M5-S3 -->
+        <div class="day-cell">
+          <div class="date-number">29</div>
+          <span class="event si-event"
+            data-info="YPAR #16:
+Career pathways &amp; conclusion,
+Reflection on skill dev,
+Certificates &amp; celebration">
+            SI #16
+          </span>
+          <span class="event phe-event"
+            data-info="PHE M5-S3:
+Reflect on program achievements,
+Present sustainability roadmap,
+Assign ongoing roles,
+Certificates &amp; closure">
+            PHE M5-S3
+          </span>
+        </div>
+        <!-- (30) Fri -->
+        <div class="day-cell">
+          <div class="date-number">30</div>
+        </div>
+        <!-- (31) Sat -->
+        <div class="day-cell">
+          <div class="date-number">31</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Tooltip container -->
+  <!-- TOOLTIP -->
   <div id="tooltip" class="tooltip"></div>
 
   <footer>
-    <p>© 2025 Club Stride Inc.</p>
+    <p>&copy; 2025 Club Stride Inc. | Foundational, Email, Social, Mobile, Portfolio, YPAR &amp; PHE</p>
   </footer>
 
   <script>
-    // Grab the tooltip container
-    const tooltip = document.getElementById('tooltip');
+    // ===== MONTH SELECTION LOGIC =====
+    const monthSelect = document.getElementById('monthSelect');
+    const monthContainers = document.querySelectorAll('.month-container');
 
-    // Listen for mouseover on each event
+    function showMonth(monthID) {
+      // Hide all month containers
+      monthContainers.forEach(mc => {
+        mc.style.display = 'none';
+      });
+      // Show chosen month
+      const selectedDiv = document.getElementById('month-' + monthID);
+      if (selectedDiv) {
+        selectedDiv.style.display = 'block';
+      }
+    }
+
+    // Default to February
+    showMonth('Feb2025');
+
+    // On dropdown change
+    monthSelect.addEventListener('change', (e) => {
+      showMonth(e.target.value);
+    });
+
+    // ===== TOOLTIP LOGIC =====
+    const tooltip = document.getElementById('tooltip');
     document.querySelectorAll('.event').forEach(eventEl => {
-      // Show tooltip on hover
+      // On hover: show tooltip
       eventEl.addEventListener('mouseover', (e) => {
-        const info = eventEl.getAttribute('data-info');
-        tooltip.innerText = info;
+        tooltip.innerText = eventEl.getAttribute('data-info');
         tooltip.style.display = 'block';
-        // Position the tooltip (above the cursor)
         positionTooltip(e);
       });
-
-      // Reposition while moving
+      // While moving: reposition
       eventEl.addEventListener('mousemove', (e) => {
         positionTooltip(e);
       });
-
-      // Hide on mouseout
+      // On mouseout: hide
       eventEl.addEventListener('mouseout', () => {
         tooltip.style.display = 'none';
       });
     });
 
-  function positionTooltip(e) {
-    // Instead of using e.pageX/e.pageY, 
-    // anchor to the hovered element's bounding box
-    const rect = e.currentTarget.getBoundingClientRect();
-  
-    // Make sure tooltip is visible before measuring offsetHeight
-    tooltip.style.display = 'block';
-  
-    // We can give a small offset so the tooltip doesn't overlap the date
-    const offset = 5;
-  
-    // Position the tooltip near the top-left of the hovered element
-    tooltip.style.left = (rect.left + window.pageXOffset + offset) + 'px';
-  
-    // Temporarily place the tooltip so we can measure its height
-    tooltip.style.top = (rect.top + window.pageYOffset + offset) + 'px';
-  
-    // Now measure its height to nudge it above or below as desired
-    const tooltipHeight = tooltip.offsetHeight;
-  
-    // Example: place it just above the day number
-    tooltip.style.top = (rect.top + window.pageYOffset - tooltipHeight - offset) + 'px';
-  }
+    function positionTooltip(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const offset = 5;
+
+      // Default: place above
+      let left = rect.left + window.pageXOffset + offset;
+      tooltip.style.left = left + 'px';
+
+      // Temporarily top for measuring
+      let top = rect.top + window.pageYOffset - offset;
+      tooltip.style.top = top + 'px';
+      tooltip.style.display = 'block';
+
+      const tooltipHeight = tooltip.offsetHeight;
+      let newTop = rect.top + window.pageYOffset - tooltipHeight - offset;
+
+      // If not enough space above, place below
+      if (newTop < 0) {
+        newTop = rect.bottom + window.pageYOffset + offset;
+      }
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = newTop + 'px';
+    }
   </script>
 </body>
 </html>

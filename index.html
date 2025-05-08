@@ -3,47 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Club Stride Program Calendar (Apr–May 2025)</title>
-  <meta name="description" content="Calendar for Email, Social, Mobile Mktg, Portfolio Prep, YPAR, PHE, Health Amplified & Career Exploration for Apr–May 2025.">
+  <meta name="description" content="Calendar for Email, Social, Mobile Mktg, Portfolio Prep, YPAR, PHE, Health Amplified & Career Exploration for Apr–May 2025, with session times.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { margin:0; font-family:'Segoe UI',sans-serif; background:linear-gradient(90deg,#ECE9F7 0%,#FFF 100%); color:#333; }
-    h1 { text-align:center; margin:20px 0; color:#615EFF; text-transform:uppercase; letter-spacing:2px; font-size:2em; }
-    .container { width:95%;max-width:1200px;margin:auto;background:#FFF;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,0.07);padding:20px; }
-    .month-selector { text-align:center; margin-bottom:1em; }
-    .month-selector select { font-size:1em; padding:4px 8px; }
-    .month-title { text-align:center; background:#F7F6FF; padding:10px; margin-bottom:10px; font-weight:bold; border:2px solid #615EFF; color:#615EFF; border-radius:8px; }
-    .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; }
-    .day-header { text-align:center; font-weight:bold; color:#615EFF; text-transform:uppercase; }
-    .day-cell { min-height:80px; background:#F9F9FD; border-radius:6px; padding:6px; position:relative; }
-    .date-number { font-weight:bold; margin-bottom:4px; }
-    .event { display:block; margin-top:2px; font-size:.8em; padding:2px 4px; border-radius:4px; color:#fff; cursor:pointer; }
-    .em-event { background:#F57C00; }
-    .sm-event { background:#4CAF50; }
-    .mm-event { background:#615EFF; }
-    .pf-event { background:#E91E63; }
-    .si-event { background:#4CD4BC; }
-    .phe-event { background:#FFC107; }
-    .add-event { background:#2196F3; }
-    .legend { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin:20px 0; }
-    .legend-item { display:flex; align-items:center; gap:5px; }
-    .legend-swatch { width:16px; height:16px; border-radius:4px; display:inline-block; }
-    .em-swatch { background:#F57C00; }
-    .sm-swatch { background:#4CAF50; }
-    .mm-swatch { background:#615EFF; }
-    .pf-swatch { background:#E91E63; }
-    .si-swatch { background:#4CD4BC; }
-    .phe-swatch { background:#FFC107; }
-    .add-swatch { background:#2196F3; }
-    footer { text-align:center; margin:20px 0; color:#615EFF; }
-    .tooltip { position:fixed; background:rgba(0,0,0,.85); color:#fff; padding:8px 12px; border-radius:6px; font-size:.85em; display:none; z-index:9999; max-width:200px; }
-    
-    /* Show April by default */
-    #month-Apr2025 {
-      display: block;
-    }
-    #month-May2025 {
-      display: none;
-    }
+    body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(90deg,#ECE9F7 0%,#FFF 100%);color:#333}
+    h1{text-align:center;margin:20px 0;color:#615EFF;text-transform:uppercase;letter-spacing:2px;font-size:2em}
+    .container{width:95%;max-width:1200px;margin:auto;background:#FFF;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,0.07);padding:20px}
+    .month-selector{text-align:center;margin-bottom:1em}
+    .month-selector select{font-size:1em;padding:4px 8px}
+    .month-title{text-align:center;background:#F7F6FF;padding:10px;margin-bottom:10px;font-weight:bold;border:2px solid #615EFF;color:#615EFF;border-radius:8px}
+    .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+    .day-header{text-align:center;font-weight:bold;color:#615EFF;text-transform:uppercase}
+    .day-cell{min-height:90px;background:#F9F9FD;border-radius:6px;padding:6px;position:relative}
+    .date-number{font-weight:bold;margin-bottom:4px}
+    .event{display:block;margin-top:2px;font-size:.8em;padding:2px 4px;border-radius:4px;color:#fff;cursor:pointer;line-height:1.15em}
+    .time{font-size:.7em;font-style:italic;display:block;line-height:1em}
+    .em-event{background:#F57C00}
+    .sm-event{background:#4CAF50}
+    .mm-event{background:#615EFF}
+    .pf-event{background:#E91E63}
+    .si-event{background:#4CD4BC}
+    .phe-event{background:#FFC107;color:#333}
+    .add-event{background:#2196F3}
+    .legend{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin:20px 0}
+    .legend-item{display:flex;align-items:center;gap:5px}
+    .legend-swatch{width:16px;height:16px;border-radius:4px;display:inline-block}
+    .em-swatch{background:#F57C00}
+    .sm-swatch{background:#4CAF50}
+    .mm-swatch{background:#615EFF}
+    .pf-swatch{background:#E91E63}
+    .si-swatch{background:#4CD4BC}
+    .phe-swatch{background:#FFC107}
+    .add-swatch{background:#2196F3}
+    footer{text-align:center;margin:20px 0;color:#615EFF}
+    .tooltip{position:fixed;background:rgba(0,0,0,.85);color:#fff;padding:8px 12px;border-radius:6px;font-size:.85em;display:none;z-index:9999;max-width:200px}
+    #month-Apr2025{display:block}
+    #month-May2025{display:none}
   </style>
 </head>
 <body>
@@ -56,13 +51,13 @@
       </select>
     </div>
     <div class="legend">
-      <div class="legend-item"><span class="legend-swatch em-swatch"></span>Email Marketing</div>
-      <div class="legend-item"><span class="legend-swatch sm-swatch"></span>Social Media</div>
-      <div class="legend-item"><span class="legend-swatch mm-swatch"></span>Mobile Marketing</div>
-      <div class="legend-item"><span class="legend-swatch pf-swatch"></span>Portfolio Prep</div>
-      <div class="legend-item"><span class="legend-swatch si-swatch"></span>YPAR</div>
-      <div class="legend-item"><span class="legend-swatch phe-swatch"></span>PHE Program</div>
-      <div class="legend-item"><span class="legend-swatch add-swatch"></span>Special Events</div>
+      <div class="legend-item"><span class="legend-swatch em-swatch"></span>Email Marketing (5:30–7 PM)</div>
+      <div class="legend-item"><span class="legend-swatch sm-swatch"></span>Social Media (5:30–7 PM)</div>
+      <div class="legend-item"><span class="legend-swatch mm-swatch"></span>Mobile Marketing (5:30–7 PM)</div>
+      <div class="legend-item"><span class="legend-swatch pf-swatch"></span>Portfolio Prep (5:30–7 PM)</div>
+      <div class="legend-item"><span class="legend-swatch si-swatch"></span>YPAR – Social Impact (4–6 PM)</div>
+      <div class="legend-item"><span class="legend-swatch phe-swatch"></span>PHE Program (4–6 PM)</div>
+      <div class="legend-item"><span class="legend-swatch add-swatch"></span>Special Events (time varies)</div>
     </div>
     <!-- April -->
     <div class="month-container" id="month-Apr2025">
@@ -71,35 +66,74 @@
         <div class="day-header">Mon</div><div class="day-header">Tue</div><div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div><div class="day-header">Sun</div>
         <div class="day-cell"></div>
         <div class="day-cell"><div class="date-number">1</div></div>
-        <div class="day-cell"><div class="date-number">2</div><span class="event em-event" data-info="Email Wk3: Audience segmentation & automation">EM #3</span><span class="event sm-event" data-info="Social Wk3: Analytics & engagement">SM #3</span></div>
+        <div class="day-cell"><div class="date-number">2</div>
+          <span class="event em-event" data-info="Email Wk3: Audience segmentation & automation | 5:30–7 PM">EM #3<span class="time">5:30–7 PM</span></span>
+          <span class="event sm-event" data-info="Social Wk3: Analytics & engagement | 5:30–7 PM">SM #3<span class="time">5:30–7 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">3</div></div>
         <div class="day-cell"><div class="date-number">4</div></div>
         <div class="day-cell"><div class="date-number">5</div></div>
         <div class="day-cell"><div class="date-number">6</div></div>
         <div class="day-cell"><div class="date-number">7</div></div>
-        <div class="day-cell"><div class="date-number">8</div><span class="event si-event" data-info="YPAR #1: Orientation & goals">SI #1</span><span class="event phe-event" data-info="PHE M4-S1: Health agency outreach">PHE M4-S1</span></div>
-        <div class="day-cell"><div class="date-number">9</div><span class="event em-event" data-info="Email Wk4: A/B Testing">EM #4</span><span class="event sm-event" data-info="Social Wk4: Paid ads">SM #4</span></div>
-        <div class="day-cell"><div class="date-number">10</div><span class="event si-event" data-info="YPAR #2: Research ethics">SI #2</span><span class="event phe-event" data-info="PHE M4-S2: Partner outreach">PHE M4-S2</span></div>
+        <div class="day-cell"><div class="date-number">8</div>
+          <span class="event si-event" data-info="YPAR #1: Orientation & goals | 4–6 PM">SI #1<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S1: Health agency outreach | 4–6 PM">PHE M4‑S1<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">9</div>
+          <span class="event em-event" data-info="Email Wk4: A/B Testing | 5:30–7 PM">EM #4<span class="time">5:30–7 PM</span></span>
+          <span class="event sm-event" data-info="Social Wk4: Paid ads | 5:30–7 PM">SM #4<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">10</div>
+          <span class="event si-event" data-info="YPAR #2: Research ethics | 4–6 PM">SI #2<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S2: Partner outreach | 4–6 PM">PHE M4‑S2<span class="time">4–6 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">11</div></div>
         <div class="day-cell"><div class="date-number">12</div></div>
         <div class="day-cell"><div class="date-number">13</div></div>
         <div class="day-cell"><div class="date-number">14</div></div>
-        <div class="day-cell"><div class="date-number">15</div><span class="event si-event" data-info="YPAR #3: Advanced survey logic">SI #3</span><span class="event phe-event" data-info="PHE M4-S3: Leadership workshop prep">PHE M4-S3</span></div>
-        <div class="day-cell"><div class="date-number">16</div><span class="event em-event" data-info="Email Wk5: Campaign design">EM #5</span><span class="event sm-event" data-info="Social Wk5: Influencer marketing">SM #5</span></div>
-        <div class="day-cell"><div class="date-number">17</div><span class="event si-event" data-info="YPAR #4: Focus group methods">SI #4</span><span class="event phe-event" data-info="PHE M4-S4: Workshop logistics">PHE M4-S4</span></div>
+        <div class="day-cell"><div class="date-number">15</div>
+          <span class="event si-event" data-info="YPAR #3: Advanced survey logic | 4–6 PM">SI #3<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S3: Leadership workshop prep | 4–6 PM">PHE M4‑S3<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">16</div>
+          <span class="event em-event" data-info="Email Wk5: Campaign design | 5:30–7 PM">EM #5<span class="time">5:30–7 PM</span></span>
+          <span class="event sm-event" data-info="Social Wk5: Influencer marketing | 5:30–7 PM">SM #5<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">17</div>
+          <span class="event si-event" data-info="YPAR #4: Focus group methods | 4–6 PM">SI #4<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S4: Workshop logistics | 4–6 PM">PHE M4‑S4<span class="time">4–6 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">18</div></div>
         <div class="day-cell"><div class="date-number">19</div></div>
         <div class="day-cell"><div class="date-number">20</div></div>
-        <div class="day-cell"><div class="date-number">21</div><span class="event mm-event" data-info="Mobile Wk1: Intro to mobile-first">MM #1</span></div>
-        <div class="day-cell"><div class="date-number">22</div><span class="event si-event" data-info="YPAR #5: Outreach planning">SI #5</span><span class="event phe-event" data-info="PHE M4-S5: Rehearse presentations">PHE M4-S5</span></div>
-        <div class="day-cell"><div class="date-number">23</div><span class="event em-event" data-info="Email Wk6: Performance optimization">EM #6</span><span class="event sm-event" data-info="Social Wk6: Campaign planning">SM #6</span></div>
-        <div class="day-cell"><div class="date-number">24</div><span class="event si-event" data-info="YPAR #6: Survey data prep">SI #6</span><span class="event phe-event" data-info="PHE M4-S6: Presentation simulation">PHE M4-S6</span></div>
+        <div class="day-cell"><div class="date-number">21</div>
+          <span class="event mm-event" data-info="Mobile Wk1: Intro to mobile‑first | 5:30–7 PM">MM #1<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">22</div>
+          <span class="event si-event" data-info="YPAR #5: Outreach planning | 4–6 PM">SI #5<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S5: Rehearse presentations | 4–6 PM">PHE M4‑S5<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">23</div>
+          <span class="event em-event" data-info="Email Wk6: Performance optimization | 5:30–7 PM">EM #6<span class="time">5:30–7 PM</span></span>
+          <span class="event sm-event" data-info="Social Wk6: Campaign planning | 5:30–7 PM">SM #6<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">24</div>
+          <span class="event si-event" data-info="YPAR #6: Survey data prep | 4–6 PM">SI #6<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S6: Presentation simulation | 4–6 PM">PHE M4‑S6<span class="time">4–6 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">25</div></div>
         <div class="day-cell"><div class="date-number">26</div></div>
         <div class="day-cell"><div class="date-number">27</div></div>
-        <div class="day-cell"><div class="date-number">28</div><span class="event mm-event" data-info="Mobile Wk2: SMS & push">MM #2</span></div>
-        <div class="day-cell"><div class="date-number">29</div><span class="event si-event" data-info="YPAR #7: Focus groups">SI #7</span><span class="event phe-event" data-info="PHE M4-S7: Booth materials">PHE M4-S7</span></div>
-        <div class="day-cell"><div class="date-number">30</div><span class="event mm-event" data-info="Mobile Wk3: Ad strategies">MM #3</span></div>
+        <div class="day-cell"><div class="date-number">28</div>
+          <span class="event mm-event" data-info="Mobile Wk2: SMS & push | 5:30–7 PM">MM #2<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">29</div>
+          <span class="event si-event" data-info="YPAR #7: Focus groups | 4–6 PM">SI #7<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S7: Booth materials | 4–6 PM">PHE M4‑S7<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">30</div>
+          <span class="event mm-event" data-info="Mobile Wk3: Ad strategies | 5:30–7 PM">MM #3<span class="time">5:30–7 PM</span></span>
+        </div>
       </div>
     </div>
     <!-- May -->
@@ -108,25 +142,66 @@
       <div class="calendar-grid">
         <div class="day-header">Mon</div><div class="day-header">Tue</div><div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div><div class="day-header">Sun</div>
         <div class="day-cell"></div><div class="day-cell"></div><div class="day-cell"></div>
-        <div class="day-cell"><div class="date-number">1</div><span class="event si-event" data-info="YPAR #8: Mid-phase survey">SI #8</span><span class="event phe-event" data-info="PHE M4-S8: Rehearsal">PHE M4-S8</span></div>
+        <div class="day-cell"><div class="date-number">1</div>
+          <span class="event si-event" data-info="YPAR #8: Mid‑phase survey | 4–6 PM">SI #8<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S8: Rehearsal | 4–6 PM">PHE M4‑S8<span class="time">4–6 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">2</div></div><div class="day-cell"><div class="date-number">3</div></div><div class="day-cell"><div class="date-number">4</div></div>
-        <div class="day-cell"><div class="date-number">5</div><span class="event mm-event" data-info="Mobile Wk4: Strategy building">MM #4</span></div>
-        <div class="day-cell"><div class="date-number">6</div><span class="event si-event" data-info="YPAR #9: Advanced data analysis">SI #9</span><span class="event phe-event" data-info="PHE M4-S9: Logistics">PHE M4-S9</span></div>
-        <div class="day-cell"><div class="date-number">7</div><span class="event pf-event" data-info="Portfolio Class 1: Project selection">PF #1</span></div>
-        <div class="day-cell"><div class="date-number">8</div><span class="event si-event" data-info="YPAR #10: Data storytelling">SI #10</span><span class="event phe-event" data-info="PHE M4-S10: Final check">PHE M4-S10</span></div>
-        <div class="day-cell"><div class="date-number">9</div><span class="event pf-event" data-info="Portfolio Class 2: Layout & resume">PF #2</span></div>
+        <div class="day-cell"><div class="date-number">5</div>
+          <span class="event mm-event" data-info="Mobile Wk4: Strategy building | 5:30–7 PM">MM #4<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">6</div>
+          <span class="event si-event" data-info="YPAR #9: Advanced data analysis | 4–6 PM">SI #9<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S9: Logistics | 4–6 PM">PHE M4‑S9<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">7</div>
+          <span class="event pf-event" data-info="Portfolio Class 1: Project selection | 5:30–7 PM">PF #1<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">8</div>
+          <span class="event si-event" data-info="YPAR #10: Data storytelling | 4–6 PM">SI #10<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S10: Final check | 4–6 PM">PHE M4‑S10<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">9</div>
+          <span class="event pf-event" data-info="Portfolio Class 2: Layout & resume | 5:30–7 PM">PF #2<span class="time">5:30–7 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">10</div></div><div class="day-cell"><div class="date-number">11</div></div>
-        <div class="day-cell"><div class="date-number">12</div><span class="event add-event" data-info="Launch of Health Amplified: Official kickoff & keynote">Health Amp Launch</span></div>
-        <div class="day-cell"><div class="date-number">13</div><span class="event si-event" data-info="YPAR #11: ML in research">SI #11</span><span class="event phe-event" data-info="PHE M4-S11: Workshop rehearsal">PHE M4-S11</span></div>
-        <div class="day-cell"><div class="date-number">14</div><span class="event pf-event" data-info="Portfolio Class 3: Final review">PF #3</span></div>
-        <div class="day-cell"><div class="date-number">15</div><span class="event add-event" data-info="Career Exploration Event: Industry panels & networking">Career Exploration</span></div>
+        <div class="day-cell"><div class="date-number">12</div>
+          <span class="event add-event" data-info="Launch of Health Amplified: Official kickoff & keynote | 5:00–5:45 PM">Health Amp Launch<span class="time">5:00–5:45 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">13</div>
+          <span class="event si-event" data-info="YPAR #11: ML in research | 4–6 PM">SI #11<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S11: Workshop rehearsal | 4–6 PM">PHE M4‑S11<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">14</div>
+          <span class="event pf-event" data-info="Portfolio Class 3: Final review | 5:30–7 PM">PF #3<span class="time">5:30–7 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">15</div>
+          <span class="event add-event" data-info="Career Exploration Event: Industry panels & networking | 4:30–7:15 PM">Career Exploration<span class="time">4:30–7:15 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">16</div></div><div class="day-cell"><div class="date-number">17</div></div><div class="day-cell"><div class="date-number">18</div></div>
-        <div class="day-cell"><div class="date-number">19</div></div><div class="day-cell"><div class="date-number">20</div><span class="event si-event" data-info="YPAR #13: Feedback review">SI #13</span><span class="event phe-event" data-info="PHE M4-S13: Review feedback from main event">PHE M4-S13</span></div>
-        <div class="day-cell"><div class="date-number">21</div></div><div class="day-cell"><div class="date-number">22</div><span class="event si-event" data-info="YPAR #14: Sustainability planning">SI #14</span><span class="event phe-event" data-info="PHE M5-S1: Map resources & partnerships">PHE M5-S1</span></div>
+        <div class="day-cell"><div class="date-number">19</div></div>
+        <div class="day-cell"><div class="date-number">20</div>
+          <span class="event si-event" data-info="YPAR #13: Feedback review | 4–6 PM">SI #13<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M4‑S13: Review feedback from main event | 4–6 PM">PHE M4‑S13<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">21</div></div>
+        <div class="day-cell"><div class="date-number">22</div>
+          <span class="event si-event" data-info="YPAR #14: Sustainability planning | 4–6 PM">SI #14<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M5‑S1: Map resources & partnerships | 4–6 PM">PHE M5‑S1<span class="time">4–6 PM</span></span>
+        </div>
         <div class="day-cell"><div class="date-number">23</div></div><div class="day-cell"><div class="date-number">24</div></div><div class="day-cell"><div class="date-number">25</div></div>
-        <div class="day-cell"><div class="date-number">26</div></div><div class="day-cell"><div class="date-number">27</div><span class="event si-event" data-info="YPAR #15: Impact analysis">SI #15</span><span class="event phe-event" data-info="PHE M5-S2: Finalize partnership roadmap">PHE M5-S2</span></div>
-        <div class="day-cell"><div class="date-number">28</div></div><div class="day-cell"><div class="date-number">29</div><span class="event si-event" data-info="YPAR #16: Certificates & conclusion">SI #16</span><span class="event phe-event" data-info="PHE M5-S3: Present sustainability roadmap">PHE M5-S3</span></div>
-        <div class="day-cell"><div class="date-number">30</div></div><div class="day-cell"><div class="date-number">31</div></div>
+        <div class="day-cell"><div class="date-number">26</div></div>
+        <div class="day-cell"><div class="date-number">27</div>
+          <span class="event si-event" data-info="YPAR #15: Impact analysis | 4–6 PM">SI #15<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M5‑S2: Finalize partnership roadmap | 4–6 PM">PHE M5‑S2<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">28</div></div>
+        <div class="day-cell"><div class="date-number">29</div>
+          <span class="event si-event" data-info="YPAR #16: Certificates & conclusion | 4–6 PM">SI #16<span class="time">4–6 PM</span></span>
+          <span class="event phe-event" data-info="PHE M5‑S3: Present sustainability roadmap | 4–6 PM">PHE M5‑S3<span class="time">4–6 PM</span></span>
+        </div>
+        <div class="day-cell"><div class="date-number">30</div></div>
+        <div class="day-cell"><div class="date-number">31</div></div>
       </div>
     </div>
   </div>
